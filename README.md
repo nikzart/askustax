@@ -1,7 +1,3 @@
 # AskUsTax
-
-A new Flutter project.
-
-## Getting Started
-
-FlutterFlow projects are built to run on the Flutter _stable_ release.
+chartered accountancy ai platform with live end to end client - CA engagements.
+## NOT OPEN SOURCE. PROPERTY OF CHIRA AI SOLUTIONS PRIVATE LIMITED / U62099TN2024PTC167929
