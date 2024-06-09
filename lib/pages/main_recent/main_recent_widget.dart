@@ -1,11 +1,7 @@
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'main_recent_model.dart';
 export 'main_recent_model.dart';
 
@@ -53,20 +49,20 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
               wrapWithModel(
                 model: _model.sideNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideNavWidget(
+                child: const SideNavWidget(
                   selectedNav: 4,
                 ),
               ),
               Expanded(
                 flex: 8,
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 1170.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -80,10 +76,10 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                             Container(
                               width: double.infinity,
                               height: 24.0,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                             ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 0.0, 0.0),
                             child: Text(
                               'Recent Orders',
@@ -96,7 +92,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 0.0, 0.0),
                             child: Text(
                               'Below are your most recent orders',
@@ -110,11 +106,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxWidth: double.infinity,
                               ),
                               decoration: BoxDecoration(
@@ -127,7 +123,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -213,7 +209,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                             ),
                           ),
                           ListView(
-                            padding: EdgeInsets.fromLTRB(
+                            padding: const EdgeInsets.fromLTRB(
                               0,
                               12.0,
                               0,
@@ -224,11 +220,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                             scrollDirection: Axis.vertical,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
@@ -242,7 +238,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -253,7 +249,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                           flex: 4,
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 12.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -268,7 +264,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                           .textScaler,
                                                   text: TextSpan(
                                                     children: [
-                                                      TextSpan(
+                                                      const TextSpan(
                                                         text: 'Order #: ',
                                                         style: TextStyle(),
                                                       ),
@@ -294,7 +290,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
@@ -343,11 +339,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   7.0,
                                                                   0.0,
@@ -400,11 +396,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -458,11 +454,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
@@ -476,7 +472,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -487,7 +483,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                           flex: 4,
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 12.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -502,7 +498,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                           .textScaler,
                                                   text: TextSpan(
                                                     children: [
-                                                      TextSpan(
+                                                      const TextSpan(
                                                         text: 'Order #: ',
                                                         style: TextStyle(),
                                                       ),
@@ -528,7 +524,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
@@ -577,11 +573,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   7.0,
                                                                   0.0,
@@ -634,11 +630,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -692,11 +688,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
@@ -710,7 +706,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -721,7 +717,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                           flex: 4,
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 12.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -736,7 +732,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                           .textScaler,
                                                   text: TextSpan(
                                                     children: [
-                                                      TextSpan(
+                                                      const TextSpan(
                                                         text: 'Order #: ',
                                                         style: TextStyle(),
                                                       ),
@@ -762,7 +758,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
@@ -811,11 +807,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   7.0,
                                                                   0.0,
@@ -868,11 +864,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -926,11 +922,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
@@ -944,7 +940,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -955,7 +951,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                           flex: 4,
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 12.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -970,7 +966,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                           .textScaler,
                                                   text: TextSpan(
                                                     children: [
-                                                      TextSpan(
+                                                      const TextSpan(
                                                         text: 'Order #: ',
                                                         style: TextStyle(),
                                                       ),
@@ -996,7 +992,7 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
@@ -1045,11 +1041,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   7.0,
                                                                   0.0,
@@ -1102,11 +1098,11 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1159,9 +1155,9 @@ class _MainRecentWidgetState extends State<MainRecentWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(height: 12.0)),
+                            ].divide(const SizedBox(height: 12.0)),
                           ),
-                        ].addToEnd(SizedBox(height: 64.0)),
+                        ].addToEnd(const SizedBox(height: 64.0)),
                       ),
                     ),
                   ),

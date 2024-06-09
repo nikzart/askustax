@@ -1,20 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -79,76 +73,76 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : Auth2LoginWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : Auth2LoginWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
         ),
         FFRoute(
           name: 'main_notifications',
           path: '/mainNotifications',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_notifications')
-              : MainNotificationsWidget(),
+              ? const NavBarPage(initialPage: 'main_notifications')
+              : const MainNotificationsWidget(),
         ),
         FFRoute(
           name: 'ai_chat',
           path: '/aiChat',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ai_chat')
-              : AiChatWidget(),
+              ? const NavBarPage(initialPage: 'ai_chat')
+              : const AiChatWidget(),
         ),
         FFRoute(
           name: 'main_recent',
           path: '/mainRecent',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_recent')
-              : MainRecentWidget(),
+              ? const NavBarPage(initialPage: 'main_recent')
+              : const MainRecentWidget(),
         ),
         FFRoute(
           name: 'main_Profile',
           path: '/mainProfile',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_Profile')
-              : MainProfileWidget(),
+              ? const NavBarPage(initialPage: 'main_Profile')
+              : const MainProfileWidget(),
         ),
         FFRoute(
           name: 'auth_2_Create',
           path: '/auth2Create',
-          builder: (context, params) => Auth2CreateWidget(),
+          builder: (context, params) => const Auth2CreateWidget(),
         ),
         FFRoute(
           name: 'auth_2_Login',
           path: '/auth2Login',
-          builder: (context, params) => Auth2LoginWidget(),
+          builder: (context, params) => const Auth2LoginWidget(),
         ),
         FFRoute(
           name: 'auth_2_ForgotPassword',
           path: '/auth2ForgotPassword',
-          builder: (context, params) => Auth2ForgotPasswordWidget(),
+          builder: (context, params) => const Auth2ForgotPasswordWidget(),
         ),
         FFRoute(
           name: 'auth_2_createProfile',
           path: '/auth2CreateProfile',
-          builder: (context, params) => Auth2CreateProfileWidget(),
+          builder: (context, params) => const Auth2CreateProfileWidget(),
         ),
         FFRoute(
           name: 'auth_2_Profile',
           path: '/auth2Profile',
-          builder: (context, params) => Auth2ProfileWidget(),
+          builder: (context, params) => const Auth2ProfileWidget(),
         ),
         FFRoute(
           name: 'auth_2_EditProfile',
           path: '/auth2EditProfile',
-          builder: (context, params) => Auth2EditProfileWidget(),
+          builder: (context, params) => const Auth2EditProfileWidget(),
         ),
         FFRoute(
           name: 'chat_ai_Screen',
           path: '/chatAiScreen',
-          builder: (context, params) => ChatAiScreenWidget(),
+          builder: (context, params) => const ChatAiScreenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -386,7 +380,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

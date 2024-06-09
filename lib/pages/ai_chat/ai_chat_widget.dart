@@ -1,11 +1,8 @@
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/g_p_t_component/ai_chat_component/ai_chat_component_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'ai_chat_model.dart';
 export 'ai_chat_model.dart';
 
@@ -53,20 +50,20 @@ class _AiChatWidgetState extends State<AiChatWidget> {
               wrapWithModel(
                 model: _model.sideNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideNavWidget(
+                child: const SideNavWidget(
                   selectedNav: 2,
                 ),
               ),
               Expanded(
                 flex: 8,
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 1170.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -82,10 +79,10 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                               Container(
                                 width: double.infinity,
                                 height: 24.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                               ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 0.0, 4.0),
                               child: Text(
                                 'CA Assist Chat',
@@ -98,7 +95,7 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'chat with our advance ai model',
@@ -110,13 +107,13 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                                     ),
                               ),
                             ),
-                          ].addToEnd(SizedBox(height: 64.0)),
+                          ].addToEnd(const SizedBox(height: 64.0)),
                         ),
                         Expanded(
                           child: wrapWithModel(
                             model: _model.aiChatComponentModel,
                             updateCallback: () => setState(() {}),
-                            child: AiChatComponentWidget(),
+                            child: const AiChatComponentWidget(),
                           ),
                         ),
                       ],

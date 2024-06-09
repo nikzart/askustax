@@ -1,10 +1,7 @@
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'main_notifications_model.dart';
 export 'main_notifications_model.dart';
 
@@ -53,20 +50,20 @@ class _MainNotificationsWidgetState extends State<MainNotificationsWidget> {
               wrapWithModel(
                 model: _model.sideNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideNavWidget(
+                child: const SideNavWidget(
                   selectedNav: 3,
                 ),
               ),
               Expanded(
                 flex: 8,
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 1170.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -80,10 +77,10 @@ class _MainNotificationsWidgetState extends State<MainNotificationsWidget> {
                             Container(
                               width: double.infinity,
                               height: 24.0,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                             ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 0.0, 0.0),
                             child: Text(
                               'Notifications',
@@ -96,7 +93,7 @@ class _MainNotificationsWidgetState extends State<MainNotificationsWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 0.0, 0.0),
                             child: Text(
                               'Below are your notifications',
@@ -108,7 +105,7 @@ class _MainNotificationsWidgetState extends State<MainNotificationsWidget> {
                                   ),
                             ),
                           ),
-                        ].addToEnd(SizedBox(height: 64.0)),
+                        ].addToEnd(const SizedBox(height: 64.0)),
                       ),
                     ),
                   ),
