@@ -1,3 +1,4 @@
+import '/components/credits_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'side_nav_widget.dart' show SideNavWidget;
 import 'package:flutter/material.dart';
@@ -17,10 +18,16 @@ class SideNavModel extends FlutterFlowModel<SideNavWidget> {
   bool mouseRegionHovered3 = false;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered4 = false;
+  // Model for credits component.
+  late CreditsModel creditsModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    creditsModel = createModel(context, () => CreditsModel());
+  }
 
   @override
-  void dispose() {}
+  void dispose() {
+    creditsModel.dispose();
+  }
 }

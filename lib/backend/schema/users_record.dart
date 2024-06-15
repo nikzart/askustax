@@ -6,6 +6,7 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
@@ -65,6 +66,46 @@ class UsersRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
+  // "primary_lang" field.
+  String? _primaryLang;
+  String get primaryLang => _primaryLang ?? '';
+  bool hasPrimaryLang() => _primaryLang != null;
+
+  // "secondary_lang" field.
+  String? _secondaryLang;
+  String get secondaryLang => _secondaryLang ?? '';
+  bool hasSecondaryLang() => _secondaryLang != null;
+
+  // "pan" field.
+  String? _pan;
+  String get pan => _pan ?? '';
+  bool hasPan() => _pan != null;
+
+  // "is_CA" field.
+  bool? _isCA;
+  bool get isCA => _isCA ?? false;
+  bool hasIsCA() => _isCA != null;
+
+  // "is_Client" field.
+  bool? _isClient;
+  bool get isClient => _isClient ?? false;
+  bool hasIsClient() => _isClient != null;
+
+  // "is_Admin" field.
+  bool? _isAdmin;
+  bool get isAdmin => _isAdmin ?? false;
+  bool hasIsAdmin() => _isAdmin != null;
+
+  // "complete_acc" field.
+  bool? _completeAcc;
+  bool get completeAcc => _completeAcc ?? false;
+  bool hasCompleteAcc() => _completeAcc != null;
+
+  // "credits" field.
+  int? _credits;
+  int get credits => _credits ?? 0;
+  bool hasCredits() => _credits != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -76,6 +117,14 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
     _title = snapshotData['title'] as String?;
+    _primaryLang = snapshotData['primary_lang'] as String?;
+    _secondaryLang = snapshotData['secondary_lang'] as String?;
+    _pan = snapshotData['pan'] as String?;
+    _isCA = snapshotData['is_CA'] as bool?;
+    _isClient = snapshotData['is_Client'] as bool?;
+    _isAdmin = snapshotData['is_Admin'] as bool?;
+    _completeAcc = snapshotData['complete_acc'] as bool?;
+    _credits = castToType<int>(snapshotData['credits']);
   }
 
   static CollectionReference get collection =>
@@ -122,6 +171,14 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? title,
+  String? primaryLang,
+  String? secondaryLang,
+  String? pan,
+  bool? isCA,
+  bool? isClient,
+  bool? isAdmin,
+  bool? completeAcc,
+  int? credits,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -135,6 +192,14 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'title': title,
+      'primary_lang': primaryLang,
+      'secondary_lang': secondaryLang,
+      'pan': pan,
+      'is_CA': isCA,
+      'is_Client': isClient,
+      'is_Admin': isAdmin,
+      'complete_acc': completeAcc,
+      'credits': credits,
     }.withoutNulls,
   );
 
@@ -155,7 +220,15 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.shortDescription == e2?.shortDescription &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
-        e1?.title == e2?.title;
+        e1?.title == e2?.title &&
+        e1?.primaryLang == e2?.primaryLang &&
+        e1?.secondaryLang == e2?.secondaryLang &&
+        e1?.pan == e2?.pan &&
+        e1?.isCA == e2?.isCA &&
+        e1?.isClient == e2?.isClient &&
+        e1?.isAdmin == e2?.isAdmin &&
+        e1?.completeAcc == e2?.completeAcc &&
+        e1?.credits == e2?.credits;
   }
 
   @override
@@ -169,7 +242,15 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.shortDescription,
         e?.lastActiveTime,
         e?.role,
-        e?.title
+        e?.title,
+        e?.primaryLang,
+        e?.secondaryLang,
+        e?.pan,
+        e?.isCA,
+        e?.isClient,
+        e?.isAdmin,
+        e?.completeAcc,
+        e?.credits
       ]);
 
   @override

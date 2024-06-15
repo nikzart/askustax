@@ -148,7 +148,7 @@ class _Auth2EditProfileWidgetState extends State<Auth2EditProfileWidget>
                     title: 'Edit Profile',
                     confirmButtonText: 'Save Changes',
                     navigateAction: () async {
-                      context.safePop();
+                      context.goNamed('ai_chat');
                     },
                   ),
                 ),

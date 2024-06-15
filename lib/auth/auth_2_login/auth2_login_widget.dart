@@ -354,8 +354,17 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                         return;
                                       }
 
-                                      context.goNamedAuth(
-                                          'ai_chat', context.mounted);
+                                      if (valueOrDefault<bool>(
+                                              currentUserDocument?.completeAcc,
+                                              false) ==
+                                          true) {
+                                        context.pushNamedAuth(
+                                            'ai_chat', context.mounted);
+                                      } else {
+                                        context.pushNamedAuth(
+                                            'auth_2_EditProfile',
+                                            context.mounted);
+                                      }
                                     },
                                     text: 'Sign In',
                                     options: FFButtonOptions(
@@ -414,7 +423,8 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                       }
 
                                       context.goNamedAuth(
-                                          'ai_chat', context.mounted);
+                                          'auth_2_createProfile',
+                                          context.mounted);
                                     },
                                     text: 'Continue with Google',
                                     icon: const FaIcon(

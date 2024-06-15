@@ -1,13 +1,15 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_p_t_component/writing_indicator/writing_indicator_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'ai_chat_component_model.dart';
 export 'ai_chat_component_model.dart';
 
@@ -192,38 +194,37 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                     width: 2.0,
                                                                   ),
                                                                 ),
-                                                                child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12.0,
-                                                                          8.0,
-                                                                          12.0,
-                                                                          8.0),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              AutoSizeText(
-                                                                        getJsonField(
-                                                                          chatItem,
-                                                                          r'''$['content']''',
-                                                                        ).toString(),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                              letterSpacing: 0.0,
-                                                                              lineHeight: 1.5,
-                                                                            ),
-                                                                      )),
-                                                                    ],
-                                                                  ),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Flexible(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            12.0,
+                                                                            8.0,
+                                                                            12.0,
+                                                                            8.0),
+                                                                        child:
+                                                                            MarkdownBody(
+                                                                          data:
+                                                                              getJsonField(
+                                                                            chatItem,
+                                                                            r'''$['content']''',
+                                                                          ).toString(),
+                                                                          selectable:
+                                                                              true,
+                                                                          onTapLink: (_, url, __) =>
+                                                                              launchURL(url!),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
                                                               Padding(
@@ -573,72 +574,93 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                             fontFamily: 'Plus Jakarta Sans',
                                             letterSpacing: 0.0,
                                           ),
-                                      maxLines: 8,
+                                      maxLines: null,
                                       minLines: 1,
+                                      maxLength: 2000,
+                                      maxLengthEnforcement:
+                                          MaxLengthEnforcement.enforced,
+                                      buildCounter: (context,
+                                              {required currentLength,
+                                              required isFocused,
+                                              maxLength}) =>
+                                          null,
                                       keyboardType: TextInputType.multiline,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).primary,
                                       validator: _model.textControllerValidator
                                           .asValidator(context),
+                                      inputFormatters: [
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp('[^\\n]*'))
+                                      ],
                                     ),
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 60.0,
-                                      icon: Icon(
-                                        Icons.send_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 30.0,
-                                      ),
-                                      showLoadingIndicator: true,
-                                      onPressed: () async {
-                                        // addToChat_aiTyping
-                                        _model.aiResponding = true;
-                                        _model.chatHistory =
-                                            functions.saveChatHistory(
-                                                _model.chatHistory,
-                                                functions.convertToJSON(_model
-                                                    .textController.text));
-                                        setState(() {});
-                                        // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
-                                        _model.chatGPTResponse =
-                                            await OpenAIChatGPTGroup
-                                                .sendFullPromptCall
-                                                .call(
-                                          apiKey:
-                                              'app-t3o3n8b4dXuovIDGR5q8FZVC',
-                                          promptJson: _model.chatHistory,
-                                        );
-                                        if ((_model
-                                                .chatGPTResponse?.succeeded ??
-                                            true)) {
-                                          _model.aiResponding = false;
-                                          _model.chatHistory =
-                                              functions.saveChatHistory(
-                                                  _model.chatHistory,
-                                                  getJsonField(
-                                                    (_model.chatGPTResponse
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$['choices'][0]['message']''',
-                                                  ));
-                                          setState(() {});
-                                          setState(() {
-                                            _model.textController?.clear();
-                                          });
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Your API Call Failed!',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 60.0,
+                                          icon: Icon(
+                                            Icons.send_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 30.0,
+                                          ),
+                                          showLoadingIndicator:
+                                              _model.aiResponding,
+                                          onPressed: () async {
+                                            // addToChat_aiTyping
+                                            _model.aiResponding = true;
+                                            _model.chatHistory =
+                                                functions.saveChatHistory(
+                                                    _model.chatHistory,
+                                                    functions.convertToJSON(
+                                                        _model.textController
+                                                            .text));
+                                            setState(() {});
+                                            // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
+                                            _model.chatGPTResponse =
+                                                await OpenAIChatGPTGroup
+                                                    .sendFullPromptCall
+                                                    .call(
+                                              apiKey:
+                                                  'app-t3o3n8b4dXuovIDGR5q8FZVC',
+                                              promptJson: _model.chatHistory,
+                                            );
+                                            if ((_model.chatGPTResponse
+                                                    ?.succeeded ??
+                                                true)) {
+                                              _model.aiResponding = false;
+                                              _model.chatHistory =
+                                                  functions.saveChatHistory(
+                                                      _model.chatHistory,
+                                                      getJsonField(
+                                                        (_model.chatGPTResponse
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$['choices'][0]['message']''',
+                                                      ));
+                                              setState(() {});
+                                              setState(() {
+                                                _model.textController?.clear();
+                                              });
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Your API Call Failed!',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
@@ -648,31 +670,49 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                               .info,
                                                           letterSpacing: 0.0,
                                                         ),
-                                              ),
+                                                  ),
+                                                  duration: const Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              _model.aiResponding = false;
+                                              setState(() {});
+                                            }
+
+                                            await _model.listViewController
+                                                ?.animateTo(
+                                              _model.listViewController!
+                                                  .position.maxScrollExtent,
                                               duration:
-                                                  const Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                            ),
-                                          );
-                                          _model.aiResponding = false;
-                                          setState(() {});
-                                        }
+                                                  const Duration(milliseconds: 100),
+                                              curve: Curves.ease,
+                                            );
+                                            if (valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.credits,
+                                                    0) >=
+                                                0) {
+                                              await currentUserReference!
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'credits':
+                                                        FieldValue.increment(
+                                                            -(1)),
+                                                  },
+                                                ),
+                                              });
+                                            }
 
-                                        await Future.delayed(
-                                            const Duration(milliseconds: 8000));
-                                        await _model.listViewController
-                                            ?.animateTo(
-                                          _model.listViewController!.position
-                                              .maxScrollExtent,
-                                          duration: const Duration(milliseconds: 100),
-                                          curve: Curves.ease,
-                                        );
-
-                                        setState(() {});
-                                      },
-                                    ),
+                                            setState(() {});
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),

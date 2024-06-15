@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/credits_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -640,6 +641,13 @@ class _SideNavWidgetState extends State<SideNavWidget>
                       ),
                     ),
                   ].divide(const SizedBox(height: 12.0)),
+                ),
+              ),
+              Flexible(
+                child: wrapWithModel(
+                  model: _model.creditsModel,
+                  updateCallback: () => setState(() {}),
+                  child: const CreditsWidget(),
                 ),
               ),
               Expanded(
