@@ -42,10 +42,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
-  late Stream<BaseAuthUser> userStream;
-
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+
+  late Stream<BaseAuthUser> userStream;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
 
@@ -56,7 +56,9 @@ class _MyAppState extends State<MyApp> {
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = askUsTaxFirebaseUserStream()
-      ..listen((user) => _appStateNotifier.update(user));
+      ..listen((user) {
+        _appStateNotifier.update(user);
+      });
     jwtTokenStream.listen((_) {});
     Future.delayed(
       const Duration(milliseconds: 1000),
@@ -125,10 +127,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'ai_chat': const AiChatWidget(),
       'main_notifications': const MainNotificationsWidget(),
+      'ai_chat': const AiChatWidget(),
       'main_recent': const MainRecentWidget(),
       'main_Profile': const MainProfileWidget(),
+      'chat_2_main': const Chat2MainWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -155,7 +158,7 @@ class _NavBarPageState extends State<NavBarPage> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.groups_sharp,
+                Icons.notifications_rounded,
                 size: 24.0,
               ),
               label: '__',
@@ -163,7 +166,7 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.notifications_rounded,
+                Icons.groups_sharp,
                 size: 24.0,
               ),
               label: '__',
@@ -180,6 +183,14 @@ class _NavBarPageState extends State<NavBarPage> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.account_circle_outlined,
+                size: 24.0,
+              ),
+              label: '__',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.forum_outlined,
                 size: 24.0,
               ),
               label: '__',

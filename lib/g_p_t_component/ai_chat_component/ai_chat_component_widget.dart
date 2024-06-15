@@ -455,168 +455,231 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 3.0,
-                      color: Color(0x33000000),
-                      offset: Offset(
-                        0.0,
-                        1.0,
-                      ),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: TextFormField(
-                        controller: _model.textController,
-                        focusNode: _model.textFieldFocusNode,
-                        autofocus: true,
-                        textCapitalization: TextCapitalization.sentences,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: 'Type something...',
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    letterSpacing: 0.0,
-                                  ),
-                          errorStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    color: FlutterFlowTheme.of(context).error,
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 2.0,
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              12.0, 8.0, 0.0, 8.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: FlutterFlowTheme.of(context).primary,
+                            borderRadius: 12.0,
+                            borderWidth: 1.0,
+                            buttonSize: 50.0,
+                            fillColor: FlutterFlowTheme.of(context).accent1,
+                            icon: Icon(
+                              Icons.refresh_rounded,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24.0,
                             ),
-                            borderRadius: BorderRadius.circular(12.0),
+                            onPressed: () async {
+                              _model.chatHistory = null;
+                              setState(() {});
+                            },
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 24.0, 70.0, 24.0),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              letterSpacing: 0.0,
-                            ),
-                        maxLines: 8,
-                        minLines: 1,
-                        keyboardType: TextInputType.multiline,
-                        cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator:
-                            _model.textControllerValidator.asValidator(context),
-                      ),
-                    ),
-                    Align(
-                      alignment: const AlignmentDirectional(1.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 60.0,
-                        icon: Icon(
-                          Icons.send_rounded,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 30.0,
-                        ),
-                        showLoadingIndicator: true,
-                        onPressed: () async {
-                          // addToChat_aiTyping
-                          _model.aiResponding = true;
-                          _model.chatHistory = functions.saveChatHistory(
-                              _model.chatHistory,
-                              functions
-                                  .convertToJSON(_model.textController.text));
-                          setState(() {});
-                          // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
-                          _model.chatGPTResponse =
-                              await OpenAIChatGPTGroup.sendFullPromptCall.call(
-                            apiKey: 'app-VTAxJmFeIgWeT9p2GvKKroM1',
-                            promptJson: _model.chatHistory,
-                          );
-                          if ((_model.chatGPTResponse?.succeeded ?? true)) {
-                            _model.aiResponding = false;
-                            _model.chatHistory = functions.saveChatHistory(
-                                _model.chatHistory,
-                                getJsonField(
-                                  (_model.chatGPTResponse?.jsonBody ?? ''),
-                                  r'''$['choices'][0]['message']''',
-                                ));
-                            setState(() {});
-                            setState(() {
-                              _model.textController?.clear();
-                            });
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Your API Call Failed!',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                                duration: const Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).error,
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                boxShadow: const [
+                                  BoxShadow(
+                                    blurRadius: 3.0,
+                                    color: Color(0x33000000),
+                                    offset: Offset(
+                                      0.0,
+                                      1.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
-                            );
-                            _model.aiResponding = false;
-                            setState(() {});
-                          }
+                              child: Stack(
+                                children: [
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: TextFormField(
+                                      controller: _model.textController,
+                                      focusNode: _model.textFieldFocusNode,
+                                      autofocus: true,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        hintText: 'Type something...',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        errorStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        contentPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                16.0, 24.0, 70.0, 24.0),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Plus Jakarta Sans',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      maxLines: 8,
+                                      minLines: 1,
+                                      keyboardType: TextInputType.multiline,
+                                      cursorColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      validator: _model.textControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 60.0,
+                                      icon: Icon(
+                                        Icons.send_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 30.0,
+                                      ),
+                                      showLoadingIndicator: true,
+                                      onPressed: () async {
+                                        // addToChat_aiTyping
+                                        _model.aiResponding = true;
+                                        _model.chatHistory =
+                                            functions.saveChatHistory(
+                                                _model.chatHistory,
+                                                functions.convertToJSON(_model
+                                                    .textController.text));
+                                        setState(() {});
+                                        // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
+                                        _model.chatGPTResponse =
+                                            await OpenAIChatGPTGroup
+                                                .sendFullPromptCall
+                                                .call(
+                                          apiKey:
+                                              'app-t3o3n8b4dXuovIDGR5q8FZVC',
+                                          promptJson: _model.chatHistory,
+                                        );
+                                        if ((_model
+                                                .chatGPTResponse?.succeeded ??
+                                            true)) {
+                                          _model.aiResponding = false;
+                                          _model.chatHistory =
+                                              functions.saveChatHistory(
+                                                  _model.chatHistory,
+                                                  getJsonField(
+                                                    (_model.chatGPTResponse
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$['choices'][0]['message']''',
+                                                  ));
+                                          setState(() {});
+                                          setState(() {
+                                            _model.textController?.clear();
+                                          });
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Your API Call Failed!',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              duration:
+                                                  const Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                            ),
+                                          );
+                                          _model.aiResponding = false;
+                                          setState(() {});
+                                        }
 
-                          await Future.delayed(
-                              const Duration(milliseconds: 8000));
-                          await _model.listViewController?.animateTo(
-                            _model.listViewController!.position.maxScrollExtent,
-                            duration: const Duration(milliseconds: 100),
-                            curve: Curves.ease,
-                          );
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 8000));
+                                        await _model.listViewController
+                                            ?.animateTo(
+                                          _model.listViewController!.position
+                                              .maxScrollExtent,
+                                          duration: const Duration(milliseconds: 100),
+                                          curve: Curves.ease,
+                                        );
 
-                          setState(() {});
-                        },
-                      ),
+                                        setState(() {});
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
