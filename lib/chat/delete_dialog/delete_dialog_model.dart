@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class DeleteDialogModel extends FlutterFlowModel<DeleteDialogWidget> {
   ///  Local state fields for this component.
 
-  bool showDelete = false;
+  bool showDelete = true;
 
   ///  State fields for stateful widgets in this component.
 

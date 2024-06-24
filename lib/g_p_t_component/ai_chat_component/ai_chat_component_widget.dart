@@ -618,6 +618,42 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                           showLoadingIndicator:
                                               _model.aiResponding,
                                           onPressed: () async {
+                                            var shouldSetState = false;
+                                            if (valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.credits,
+                                                    0) <=
+                                                0) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'You Dont have enough credits to chat with CA Assist!',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                  duration: const Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              if (shouldSetState) {
+                                                setState(() {});
+                                              }
+                                              return;
+                                            }
                                             // addToChat_aiTyping
                                             _model.aiResponding = true;
                                             _model.chatHistory =
@@ -636,6 +672,8 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                   'app-t3o3n8b4dXuovIDGR5q8FZVC',
                                               promptJson: _model.chatHistory,
                                             );
+
+                                            shouldSetState = true;
                                             if ((_model.chatGPTResponse
                                                     ?.succeeded ??
                                                 true)) {
@@ -650,6 +688,22 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                         r'''$['choices'][0]['message']''',
                                                       ));
                                               setState(() {});
+                                              if (valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.credits,
+                                                      0) >
+                                                  0) {
+                                                await currentUserReference!
+                                                    .update({
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'credits':
+                                                          FieldValue.increment(
+                                                              -(1)),
+                                                    },
+                                                  ),
+                                                });
+                                              }
                                               setState(() {
                                                 _model.textController?.clear();
                                               });
@@ -691,24 +745,9 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                   const Duration(milliseconds: 100),
                                               curve: Curves.ease,
                                             );
-                                            if (valueOrDefault(
-                                                    currentUserDocument
-                                                        ?.credits,
-                                                    0) >=
-                                                0) {
-                                              await currentUserReference!
-                                                  .update({
-                                                ...mapToFirestore(
-                                                  {
-                                                    'credits':
-                                                        FieldValue.increment(
-                                                            -(1)),
-                                                  },
-                                                ),
-                                              });
+                                            if (shouldSetState) {
+                                              setState(() {});
                                             }
-
-                                            setState(() {});
                                           },
                                         ),
                                       ),

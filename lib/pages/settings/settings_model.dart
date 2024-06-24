@@ -1,9 +1,13 @@
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'chat2_main_widget.dart' show Chat2MainWidget;
+import 'settings_widget.dart' show SettingsWidget;
 import 'package:flutter/material.dart';
 
-class Chat2MainModel extends FlutterFlowModel<Chat2MainWidget> {
+class SettingsModel extends FlutterFlowModel<SettingsWidget> {
+  ///  Local state fields for this page.
+
+  int selectedPage = 2;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

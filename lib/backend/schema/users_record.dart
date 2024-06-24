@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -61,11 +60,6 @@ class UsersRecord extends FirestoreRecord {
   String get role => _role ?? '';
   bool hasRole() => _role != null;
 
-  // "title" field.
-  String? _title;
-  String get title => _title ?? '';
-  bool hasTitle() => _title != null;
-
   // "primary_lang" field.
   String? _primaryLang;
   String get primaryLang => _primaryLang ?? '';
@@ -106,6 +100,51 @@ class UsersRecord extends FirestoreRecord {
   int get credits => _credits ?? 0;
   bool hasCredits() => _credits != null;
 
+  // "is_Online" field.
+  bool? _isOnline;
+  bool get isOnline => _isOnline ?? false;
+  bool hasIsOnline() => _isOnline != null;
+
+  // "ICAI_regNo" field.
+  String? _iCAIRegNo;
+  String get iCAIRegNo => _iCAIRegNo ?? '';
+  bool hasICAIRegNo() => _iCAIRegNo != null;
+
+  // "address" field.
+  String? _address;
+  String get address => _address ?? '';
+  bool hasAddress() => _address != null;
+
+  // "pinCode" field.
+  int? _pinCode;
+  int get pinCode => _pinCode ?? 0;
+  bool hasPinCode() => _pinCode != null;
+
+  // "state" field.
+  String? _state;
+  String get state => _state ?? '';
+  bool hasState() => _state != null;
+
+  // "verified_CA" field.
+  bool? _verifiedCA;
+  bool get verifiedCA => _verifiedCA ?? false;
+  bool hasVerifiedCA() => _verifiedCA != null;
+
+  // "aadhaar_no" field.
+  int? _aadhaarNo;
+  int get aadhaarNo => _aadhaarNo ?? 0;
+  bool hasAadhaarNo() => _aadhaarNo != null;
+
+  // "district" field.
+  String? _district;
+  String get district => _district ?? '';
+  bool hasDistrict() => _district != null;
+
+  // "location" field.
+  String? _location;
+  String get location => _location ?? '';
+  bool hasLocation() => _location != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -116,7 +155,6 @@ class UsersRecord extends FirestoreRecord {
     _shortDescription = snapshotData['shortDescription'] as String?;
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
-    _title = snapshotData['title'] as String?;
     _primaryLang = snapshotData['primary_lang'] as String?;
     _secondaryLang = snapshotData['secondary_lang'] as String?;
     _pan = snapshotData['pan'] as String?;
@@ -125,6 +163,15 @@ class UsersRecord extends FirestoreRecord {
     _isAdmin = snapshotData['is_Admin'] as bool?;
     _completeAcc = snapshotData['complete_acc'] as bool?;
     _credits = castToType<int>(snapshotData['credits']);
+    _isOnline = snapshotData['is_Online'] as bool?;
+    _iCAIRegNo = snapshotData['ICAI_regNo'] as String?;
+    _address = snapshotData['address'] as String?;
+    _pinCode = castToType<int>(snapshotData['pinCode']);
+    _state = snapshotData['state'] as String?;
+    _verifiedCA = snapshotData['verified_CA'] as bool?;
+    _aadhaarNo = castToType<int>(snapshotData['aadhaar_no']);
+    _district = snapshotData['district'] as String?;
+    _location = snapshotData['location'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -170,7 +217,6 @@ Map<String, dynamic> createUsersRecordData({
   String? shortDescription,
   DateTime? lastActiveTime,
   String? role,
-  String? title,
   String? primaryLang,
   String? secondaryLang,
   String? pan,
@@ -179,6 +225,15 @@ Map<String, dynamic> createUsersRecordData({
   bool? isAdmin,
   bool? completeAcc,
   int? credits,
+  bool? isOnline,
+  String? iCAIRegNo,
+  String? address,
+  int? pinCode,
+  String? state,
+  bool? verifiedCA,
+  int? aadhaarNo,
+  String? district,
+  String? location,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -191,7 +246,6 @@ Map<String, dynamic> createUsersRecordData({
       'shortDescription': shortDescription,
       'last_active_time': lastActiveTime,
       'role': role,
-      'title': title,
       'primary_lang': primaryLang,
       'secondary_lang': secondaryLang,
       'pan': pan,
@@ -200,6 +254,15 @@ Map<String, dynamic> createUsersRecordData({
       'is_Admin': isAdmin,
       'complete_acc': completeAcc,
       'credits': credits,
+      'is_Online': isOnline,
+      'ICAI_regNo': iCAIRegNo,
+      'address': address,
+      'pinCode': pinCode,
+      'state': state,
+      'verified_CA': verifiedCA,
+      'aadhaar_no': aadhaarNo,
+      'district': district,
+      'location': location,
     }.withoutNulls,
   );
 
@@ -220,7 +283,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.shortDescription == e2?.shortDescription &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
-        e1?.title == e2?.title &&
         e1?.primaryLang == e2?.primaryLang &&
         e1?.secondaryLang == e2?.secondaryLang &&
         e1?.pan == e2?.pan &&
@@ -228,7 +290,16 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.isClient == e2?.isClient &&
         e1?.isAdmin == e2?.isAdmin &&
         e1?.completeAcc == e2?.completeAcc &&
-        e1?.credits == e2?.credits;
+        e1?.credits == e2?.credits &&
+        e1?.isOnline == e2?.isOnline &&
+        e1?.iCAIRegNo == e2?.iCAIRegNo &&
+        e1?.address == e2?.address &&
+        e1?.pinCode == e2?.pinCode &&
+        e1?.state == e2?.state &&
+        e1?.verifiedCA == e2?.verifiedCA &&
+        e1?.aadhaarNo == e2?.aadhaarNo &&
+        e1?.district == e2?.district &&
+        e1?.location == e2?.location;
   }
 
   @override
@@ -242,7 +313,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.shortDescription,
         e?.lastActiveTime,
         e?.role,
-        e?.title,
         e?.primaryLang,
         e?.secondaryLang,
         e?.pan,
@@ -250,7 +320,16 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.isClient,
         e?.isAdmin,
         e?.completeAcc,
-        e?.credits
+        e?.credits,
+        e?.isOnline,
+        e?.iCAIRegNo,
+        e?.address,
+        e?.pinCode,
+        e?.state,
+        e?.verifiedCA,
+        e?.aadhaarNo,
+        e?.district,
+        e?.location
       ]);
 
   @override

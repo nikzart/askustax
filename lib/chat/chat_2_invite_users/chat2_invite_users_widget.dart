@@ -83,7 +83,7 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Invite Friends',
+                      'Connect with CA',
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Outfit',
@@ -146,7 +146,7 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 0.0, 0.0),
                           child: Text(
-                            'Invite Friends',
+                            'Invite CA',
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -195,7 +195,16 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                     child:
                         PagedListView<DocumentSnapshot<Object?>?, UsersRecord>(
                       pagingController: _model.setListViewController(
-                        UsersRecord.collection.orderBy('display_name'),
+                        UsersRecord.collection
+                            .where(
+                              'is_CA',
+                              isEqualTo: true,
+                            )
+                            .where(
+                              'verified_CA',
+                              isEqualTo: true,
+                            )
+                            .orderBy('display_name'),
                       ),
                       padding: const EdgeInsets.fromLTRB(
                         0,

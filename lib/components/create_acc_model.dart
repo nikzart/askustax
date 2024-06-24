@@ -1,14 +1,10 @@
-import '/components/brand_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'auth2_create_widget.dart' show Auth2CreateWidget;
+import 'create_acc_widget.dart' show CreateAccWidget;
 import 'package:flutter/material.dart';
 
-class Auth2CreateModel extends FlutterFlowModel<Auth2CreateWidget> {
-  ///  State fields for stateful widgets in this page.
+class CreateAccModel extends FlutterFlowModel<CreateAccWidget> {
+  ///  State fields for stateful widgets in this component.
 
-  final unfocusNode = FocusNode();
-  // Model for brand component.
-  late BrandModel brandModel;
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;
@@ -18,21 +14,28 @@ class Auth2CreateModel extends FlutterFlowModel<Auth2CreateWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // State field(s) for confirmPassword widget.
+  FocusNode? confirmPasswordFocusNode;
+  TextEditingController? confirmPasswordTextController;
+  late bool confirmPasswordVisibility;
+  String? Function(BuildContext, String?)?
+      confirmPasswordTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    brandModel = createModel(context, () => BrandModel());
     passwordVisibility = false;
+    confirmPasswordVisibility = false;
   }
 
   @override
   void dispose() {
-    unfocusNode.dispose();
-    brandModel.dispose();
     emailAddressFocusNode?.dispose();
     emailAddressTextController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();
+
+    confirmPasswordFocusNode?.dispose();
+    confirmPasswordTextController?.dispose();
   }
 }

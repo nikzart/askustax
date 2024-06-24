@@ -131,25 +131,27 @@ class _Auth2EditProfileWidgetState extends State<Auth2EditProfileWidget>
               ).animateOnPageLoad(
                   animationsMap['containerOnPageLoadAnimation']!),
             ),
-            Align(
-              alignment: const AlignmentDirectional(0.0, -1.0),
-              child: Container(
-                width: double.infinity,
-                constraints: const BoxConstraints(
-                  maxWidth: 770.0,
-                ),
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: wrapWithModel(
-                  model: _model.editProfileAuth2Model,
-                  updateCallback: () => setState(() {}),
-                  child: EditProfileAuth2Widget(
-                    title: 'Edit Profile',
-                    confirmButtonText: 'Save Changes',
-                    navigateAction: () async {
-                      context.goNamed('ai_chat');
-                    },
+            Flexible(
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, -1.0),
+                child: Container(
+                  width: double.infinity,
+                  constraints: const BoxConstraints(
+                    maxWidth: 770.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: wrapWithModel(
+                    model: _model.editProfileAuth2Model,
+                    updateCallback: () => setState(() {}),
+                    child: EditProfileAuth2Widget(
+                      title: 'Edit Profile',
+                      confirmButtonText: 'Save Changes',
+                      navigateAction: () async {
+                        context.goNamed('ai_chat');
+                      },
+                    ),
                   ),
                 ),
               ),

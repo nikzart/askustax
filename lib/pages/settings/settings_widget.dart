@@ -5,25 +5,25 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'main_profile_model.dart';
-export 'main_profile_model.dart';
+import 'settings_model.dart';
+export 'settings_model.dart';
 
-class MainProfileWidget extends StatefulWidget {
-  const MainProfileWidget({super.key});
+class SettingsWidget extends StatefulWidget {
+  const SettingsWidget({super.key});
 
   @override
-  State<MainProfileWidget> createState() => _MainProfileWidgetState();
+  State<SettingsWidget> createState() => _SettingsWidgetState();
 }
 
-class _MainProfileWidgetState extends State<MainProfileWidget> {
-  late MainProfileModel _model;
+class _SettingsWidgetState extends State<SettingsWidget> {
+  late SettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MainProfileModel());
+    _model = createModel(context, () => SettingsModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -53,7 +53,7 @@ class _MainProfileWidgetState extends State<MainProfileWidget> {
                 model: _model.sideNavModel,
                 updateCallback: () => setState(() {}),
                 child: const SideNavWidget(
-                  selectedNav: 0,
+                  selectedNav: 5,
                 ),
               ),
               Expanded(

@@ -140,7 +140,7 @@ class _Auth2CreateProfileWidgetState extends State<Auth2CreateProfileWidget>
                           title: 'Create Profile',
                           confirmButtonText: 'Save & Continue',
                           navigateAction: () async {
-                            context.pushNamed('auth_2_Profile');
+                            context.pushNamed('ai_chat');
                           },
                         ),
                       ),

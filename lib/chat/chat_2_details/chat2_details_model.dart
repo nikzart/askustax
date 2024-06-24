@@ -1,4 +1,5 @@
 import '/chat/chat_thread_component/chat_thread_component_widget.dart';
+import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'chat2_details_widget.dart' show Chat2DetailsWidget;
 import 'package:flutter/material.dart';
@@ -32,11 +33,14 @@ class Chat2DetailsModel extends FlutterFlowModel<Chat2DetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Model for sideNav component.
+  late SideNavModel sideNavModel;
   // Model for chat_ThreadComponent component.
   late ChatThreadComponentModel chatThreadComponentModel;
 
   @override
   void initState(BuildContext context) {
+    sideNavModel = createModel(context, () => SideNavModel());
     chatThreadComponentModel =
         createModel(context, () => ChatThreadComponentModel());
   }
@@ -44,6 +48,7 @@ class Chat2DetailsModel extends FlutterFlowModel<Chat2DetailsWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    sideNavModel.dispose();
     chatThreadComponentModel.dispose();
   }
 }

@@ -1,9 +1,9 @@
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'main_recent_widget.dart' show MainRecentWidget;
+import 'dash_widget.dart' show DashWidget;
 import 'package:flutter/material.dart';
 
-class MainRecentModel extends FlutterFlowModel<MainRecentWidget> {
+class DashModel extends FlutterFlowModel<DashWidget> {
   ///  Local state fields for this page.
 
   int selectedPage = 1;

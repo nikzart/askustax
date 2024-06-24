@@ -97,23 +97,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const AiChatWidget(),
         ),
         FFRoute(
-          name: 'main_recent',
-          path: '/mainRecent',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'main_recent')
-              : const MainRecentWidget(),
+          name: 'dash',
+          path: '/dash',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'dash') : const DashWidget(),
         ),
         FFRoute(
-          name: 'main_Profile',
-          path: '/mainProfile',
+          name: 'settings',
+          path: '/settings',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'main_Profile')
-              : const MainProfileWidget(),
+              ? const NavBarPage(initialPage: 'settings')
+              : const SettingsWidget(),
         ),
         FFRoute(
-          name: 'auth_2_Create',
-          path: '/auth2Create',
-          builder: (context, params) => const Auth2CreateWidget(),
+          name: 'auth_2_CreateClient',
+          path: '/auth2CreateClient',
+          builder: (context, params) => const Auth2CreateClientWidget(),
         ),
         FFRoute(
           name: 'auth_2_Login',
@@ -191,6 +190,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'auth_2_CreateCA',
+          path: '/auth2CreateCA',
+          builder: (context, params) => const Auth2CreateCAWidget(),
+        ),
+        FFRoute(
+          name: 'ca_chat',
+          path: '/ca_chat',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ca_chat')
+              : const CaChatWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

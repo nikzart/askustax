@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -309,19 +310,31 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'Delete',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                            FFButtonWidget(
+                              onPressed: () async {
+                                await widget.chatList!.reference.delete();
+                              },
+                              text: 'Delete',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).error,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
                                     .override(
                                       fontFamily: 'Plus Jakarta Sans',
-                                      color: FlutterFlowTheme.of(context).error,
+                                      color: Colors.white,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
                                     ),
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                           ],

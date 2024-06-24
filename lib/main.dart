@@ -9,6 +9,7 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'index.dart';
 
 void main() async {
@@ -129,9 +130,10 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'main_notifications': const MainNotificationsWidget(),
       'ai_chat': const AiChatWidget(),
-      'main_recent': const MainRecentWidget(),
-      'main_Profile': const MainProfileWidget(),
+      'dash': const DashWidget(),
+      'settings': const SettingsWidget(),
       'chat_2_main': const Chat2MainWidget(),
+      'ca_chat': const CaChatWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -165,8 +167,8 @@ class _NavBarPageState extends State<NavBarPage> {
               tooltip: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.groups_sharp,
+              icon: FaIcon(
+                FontAwesomeIcons.robot,
                 size: 24.0,
               ),
               label: '__',
@@ -174,7 +176,7 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.receipt_outlined,
+                Icons.dashboard_sharp,
                 size: 24.0,
               ),
               label: '__',
@@ -191,6 +193,14 @@ class _NavBarPageState extends State<NavBarPage> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.forum_outlined,
+                size: 24.0,
+              ),
+              label: '__',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.robot,
                 size: 24.0,
               ),
               label: '__',

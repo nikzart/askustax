@@ -48,6 +48,7 @@ class SendFullPromptCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -67,6 +68,41 @@ class SendFullPromptCall {
 }
 
 /// End OpenAI ChatGPT Group Code
+
+class PincodeFetchCall {
+  static Future<ApiCallResponse> call({
+    int? pinCode,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'pincodeFetch',
+      apiUrl: 'https://api.postalpincode.in/pincode/$pinCode',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? apiState(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].PostOffice[0].State''',
+      ));
+  static String? apiDistrict(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$[:].PostOffice[0].District''',
+      ));
+  static String? apiLocation(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$[:].PostOffice[0].Name''',
+      ));
+}
 
 class ApiPagingParams {
   int nextPageNumber = 0;
