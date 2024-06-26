@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'user_details_widget.dart' show UserDetailsWidget;
+import 'empty_widget.dart' show EmptyWidget;
 import 'package:flutter/material.dart';
 
-class UserDetailsModel extends FlutterFlowModel<UserDetailsWidget> {
+class EmptyModel extends FlutterFlowModel<EmptyWidget> {
   @override
   void initState(BuildContext context) {}
 

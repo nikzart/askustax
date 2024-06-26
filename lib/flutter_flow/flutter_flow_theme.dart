@@ -55,6 +55,7 @@ abstract class FlutterFlowTheme {
   late Color info;
 
   late Color background;
+  late Color accent5;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -145,6 +146,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color info = const Color(0xFFFFFFFF);
 
   late Color background = const Color(0xFF1B1D27);
+  late Color accent5 = const Color(0x4CFF5963);
 }
 
 abstract class Typography {
@@ -318,6 +320,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color info = const Color(0xFFFFFFFF);
 
   late Color background = const Color(0xFF1B1D27);
+  late Color accent5 = const Color(0xFF4D73EA);
 }
 
 extension TextStyleHelper on TextStyle {

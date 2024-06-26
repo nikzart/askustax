@@ -263,83 +263,90 @@ class _SideNavWidgetState extends State<SideNavWidget>
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MouseRegion(
-                      opaque: false,
-                      cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                      onEnter: ((event) async {
-                        setState(() => _model.mouseRegionHovered1 = true);
-                      }),
-                      onExit: ((event) async {
-                        setState(() => _model.mouseRegionHovered1 = false);
-                      }),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('dash');
-                          },
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeInOut,
-                            width: double.infinity,
-                            height: 44.0,
-                            decoration: BoxDecoration(
-                              color: () {
-                                if (_model.mouseRegionHovered1) {
-                                  return FlutterFlowTheme.of(context)
-                                      .secondaryBackground;
-                                } else if (widget.selectedNav == 1) {
-                                  return FlutterFlowTheme.of(context).accent1;
-                                } else {
-                                  return FlutterFlowTheme.of(context)
-                                      .primaryBackground;
-                                }
-                              }(),
-                              borderRadius: BorderRadius.circular(12.0),
-                              shape: BoxShape.rectangle,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 8.0, 0.0),
-                                    child: Icon(
-                                      Icons.space_dashboard,
-                                      color: _model.selectedNav == 1
-                                          ? FlutterFlowTheme.of(context).primary
-                                          : FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                      size: 24.0,
-                                    ),
-                                  ),
-                                  if (FFAppState().navOpen == true)
-                                    Expanded(
-                                      child: Text(
-                                        'Dashboard',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              letterSpacing: 0.0,
-                                            ),
+                    if (valueOrDefault<bool>(
+                        currentUserDocument?.isAdmin, false))
+                      AuthUserStreamWidget(
+                        builder: (context) => MouseRegion(
+                          opaque: false,
+                          cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                          onEnter: ((event) async {
+                            setState(() => _model.mouseRegionHovered1 = true);
+                          }),
+                          onExit: ((event) async {
+                            setState(() => _model.mouseRegionHovered1 = false);
+                          }),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('dash');
+                              },
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeInOut,
+                                width: double.infinity,
+                                height: 44.0,
+                                decoration: BoxDecoration(
+                                  color: () {
+                                    if (_model.mouseRegionHovered1) {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    } else if (widget.selectedNav == 1) {
+                                      return FlutterFlowTheme.of(context)
+                                          .accent1;
+                                    } else {
+                                      return FlutterFlowTheme.of(context)
+                                          .primaryBackground;
+                                    }
+                                  }(),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: Icon(
+                                          Icons.space_dashboard,
+                                          color: _model.selectedNav == 1
+                                              ? FlutterFlowTheme.of(context)
+                                                  .primary
+                                              : FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          size: 24.0,
+                                        ),
                                       ),
-                                    ),
-                                ],
+                                      if (FFAppState().navOpen == true)
+                                        Expanded(
+                                          child: Text(
+                                            'Dashboard',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                     MouseRegion(
                       opaque: false,
                       cursor: SystemMouseCursors.click ?? MouseCursor.defer,
