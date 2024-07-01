@@ -155,9 +155,7 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                       child: CachedNetworkImage(
                         fadeInDuration: const Duration(milliseconds: 500),
                         fadeOutDuration: const Duration(milliseconds: 500),
-                        imageUrl: getCORSProxyUrl(
-                          widget.chatMessage!.image,
-                        ),
+                        imageUrl: widget.chatMessage!.image,
                         width: double.infinity,
                         fit: BoxFit.fitWidth,
                         memCacheWidth: 1200,
@@ -204,7 +202,12 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                             height: 36.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).accent1,
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ),
                               shape: BoxShape.rectangle,
                               border: Border.all(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -218,9 +221,7 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                 child: CachedNetworkImage(
                                   fadeInDuration: const Duration(milliseconds: 200),
                                   fadeOutDuration: const Duration(milliseconds: 200),
-                                  imageUrl: getCORSProxyUrl(
-                                    otherUserUsersRecord.photoUrl,
-                                  ),
+                                  imageUrl: otherUserUsersRecord.photoUrl,
                                   width: 44.0,
                                   height: 44.0,
                                   fit: BoxFit.cover,

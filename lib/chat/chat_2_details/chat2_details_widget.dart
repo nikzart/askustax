@@ -197,9 +197,20 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                   .of(context)
                                                               .accent1,
                                                           borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
+                                                              const BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                          ),
                                                           shape: BoxShape
                                                               .rectangle,
                                                           border: Border.all(
@@ -220,10 +231,8 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                         8.0),
                                                             child:
                                                                 Image.network(
-                                                              getCORSProxyUrl(
-                                                                conditionalBuilderUsersRecord
-                                                                    .photoUrl,
-                                                              ),
+                                                              conditionalBuilderUsersRecord
+                                                                  .photoUrl,
                                                               width: 44.0,
                                                               height: 44.0,
                                                               fit: BoxFit.cover,
@@ -420,9 +429,21 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                         context)
                                                                     .accent1,
                                                                 borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
+                                                                    const BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                ),
                                                                 shape: BoxShape
                                                                     .rectangle,
                                                                 border:
@@ -455,13 +476,11 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                             milliseconds:
                                                                                 300),
                                                                     imageUrl:
-                                                                        getCORSProxyUrl(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        secondUserUsersRecord
-                                                                            .photoUrl,
-                                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/GzvajSxrHvi1zwJQsfLk/assets/tjm1k7ywi5dr/@3xlogoMark_outlineOnWhite.png',
-                                                                      ),
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                      secondUserUsersRecord
+                                                                          .photoUrl,
+                                                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/GzvajSxrHvi1zwJQsfLk/assets/tjm1k7ywi5dr/@3xlogoMark_outlineOnWhite.png',
                                                                     ),
                                                                     width: 44.0,
                                                                     height:
@@ -488,9 +507,22 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                     .of(context)
                                                                 .accent1,
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                                const BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      10.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      10.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      10.0),
+                                                            ),
                                                             shape: BoxShape
                                                                 .rectangle,
                                                             border: Border.all(
@@ -511,13 +543,11 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                           8.0),
                                                               child:
                                                                   Image.network(
-                                                                getCORSProxyUrl(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    conditionalBuilderUsersRecord
-                                                                        .photoUrl,
-                                                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/GzvajSxrHvi1zwJQsfLk/assets/tjm1k7ywi5dr/@3xlogoMark_outlineOnWhite.png',
-                                                                  ),
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  conditionalBuilderUsersRecord
+                                                                      .photoUrl,
+                                                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/GzvajSxrHvi1zwJQsfLk/assets/tjm1k7ywi5dr/@3xlogoMark_outlineOnWhite.png',
                                                                 ),
                                                                 width: 44.0,
                                                                 height: 44.0,

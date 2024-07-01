@@ -107,7 +107,12 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                             height: 36.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).accent1,
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ),
                               shape: BoxShape.rectangle,
                               border: Border.all(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -121,9 +126,7 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                 child: CachedNetworkImage(
                                   fadeInDuration: const Duration(milliseconds: 200),
                                   fadeOutDuration: const Duration(milliseconds: 200),
-                                  imageUrl: getCORSProxyUrl(
-                                    otherUserUsersRecord.photoUrl,
-                                  ),
+                                  imageUrl: otherUserUsersRecord.photoUrl,
                                   width: 44.0,
                                   height: 44.0,
                                   fit: BoxFit.cover,
@@ -231,9 +234,7 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                                 const Duration(milliseconds: 500),
                                             fadeOutDuration:
                                                 const Duration(milliseconds: 500),
-                                            imageUrl: getCORSProxyUrl(
-                                              path,
-                                            ),
+                                            imageUrl: path,
                                             width: 300.0,
                                             fit: BoxFit.cover,
                                           ),
@@ -300,7 +301,12 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                         height: 36.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).accent1,
-                          borderRadius: BorderRadius.circular(12.0),
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                           shape: BoxShape.rectangle,
                           border: Border.all(
                             color: FlutterFlowTheme.of(context).primary,
@@ -315,9 +321,7 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                               child: CachedNetworkImage(
                                 fadeInDuration: const Duration(milliseconds: 200),
                                 fadeOutDuration: const Duration(milliseconds: 200),
-                                imageUrl: getCORSProxyUrl(
-                                  currentUserPhoto,
-                                ),
+                                imageUrl: currentUserPhoto,
                                 width: 44.0,
                                 height: 44.0,
                                 fit: BoxFit.cover,
@@ -425,9 +429,7 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                             const Duration(milliseconds: 500),
                                         fadeOutDuration:
                                             const Duration(milliseconds: 500),
-                                        imageUrl: getCORSProxyUrl(
-                                          path,
-                                        ),
+                                        imageUrl: path,
                                         width: 300.0,
                                         fit: BoxFit.cover,
                                       ),

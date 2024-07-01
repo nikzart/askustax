@@ -44,7 +44,7 @@ class _ProfileViewWidgetState extends State<ProfileViewWidget>
         effectsBuilder: () => [
           VisibilityEffect(duration: 300.ms),
           MoveEffect(
-            curve: Curves.bounceOut,
+            curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
             begin: const Offset(0.0, 100.0),
@@ -164,9 +164,7 @@ class _ProfileViewWidgetState extends State<ProfileViewWidget>
                                     fadeInDuration: const Duration(milliseconds: 500),
                                     fadeOutDuration:
                                         const Duration(milliseconds: 500),
-                                    imageUrl: getCORSProxyUrl(
-                                      widget.userDetails!.photoUrl,
-                                    ),
+                                    imageUrl: widget.userDetails!.photoUrl,
                                     fit: BoxFit.fitWidth,
                                   ),
                                 ),
@@ -905,6 +903,7 @@ class _ProfileViewWidgetState extends State<ProfileViewWidget>
                             }
 
                             setState(() {});
+                            Navigator.pop(context);
                             ScaffoldMessenger.of(context).clearSnackBars();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

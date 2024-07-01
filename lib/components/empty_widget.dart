@@ -5,7 +5,12 @@ import 'empty_model.dart';
 export 'empty_model.dart';
 
 class EmptyWidget extends StatefulWidget {
-  const EmptyWidget({super.key});
+  const EmptyWidget({
+    super.key,
+    String? type,
+  }) : type = type ?? 'Data';
+
+  final String type;
 
   @override
   State<EmptyWidget> createState() => _EmptyWidgetState();
@@ -37,35 +42,38 @@ class _EmptyWidgetState extends State<EmptyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Icon(
-          Icons.error,
-          color: FlutterFlowTheme.of(context).secondaryText,
-          size: 72.0,
-        ),
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-          child: Text(
-            'No Users',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
-                  letterSpacing: 0.0,
-                ),
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Icon(
+            Icons.error,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 72.0,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-          child: Text(
-            'It seems that there are no users to display.',
-            style: FlutterFlowTheme.of(context).labelMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
-                  letterSpacing: 0.0,
-                ),
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            child: Text(
+              'No ${widget.type}',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Outfit',
+                    letterSpacing: 0.0,
+                  ),
+            ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+            child: Text(
+              'It seems that there are no ${widget.type} to display.',
+              style: FlutterFlowTheme.of(context).labelMedium.override(
+                    fontFamily: 'Plus Jakarta Sans',
+                    letterSpacing: 0.0,
+                  ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

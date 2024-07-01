@@ -290,8 +290,12 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .accent1,
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(10.0),
+                                            bottomRight: Radius.circular(10.0),
+                                            topLeft: Radius.circular(10.0),
+                                            topRight: Radius.circular(10.0),
+                                          ),
                                           border: Border.all(
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
@@ -308,9 +312,8 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                                   const Duration(milliseconds: 200),
                                               fadeOutDuration:
                                                   const Duration(milliseconds: 200),
-                                              imageUrl: getCORSProxyUrl(
-                                                listViewUsersRecord.photoUrl,
-                                              ),
+                                              imageUrl:
+                                                  listViewUsersRecord.photoUrl,
                                               width: 44.0,
                                               height: 44.0,
                                               fit: BoxFit.cover,

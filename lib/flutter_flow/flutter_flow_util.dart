@@ -27,6 +27,7 @@ export 'package:intl/intl.dart';
 export 'package:cloud_firestore/cloud_firestore.dart'
     show DocumentReference, FirebaseFirestore;
 export 'package:page_transition/page_transition.dart';
+export 'custom_icons.dart' show FFIcons;
 export 'nav/nav.dart';
 
 final RouteObserver<ModalRoute> routeObserver = RouteObserver<PageRoute>();
@@ -349,19 +350,6 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
       setState(fn);
     }
   }
-}
-
-String getCORSProxyUrl(String path) {
-  if (!kIsWeb) {
-    return path;
-  }
-  // No need to use proxy for images that come from Firebase Storage.
-  if (path.contains('ask-us-tax-xwz4f1.appspot.com')) {
-    return path;
-  }
-  const proxyUrl =
-      'https://us-central1-ask-us-tax-xwz4f1.cloudfunctions.net/corsProxy?url=';
-  return '$proxyUrl$path';
 }
 
 // For iOS 16 and below, set the status bar color to match the app's theme.

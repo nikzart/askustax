@@ -205,9 +205,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                           const Duration(milliseconds: 500),
                                       fadeOutDuration:
                                           const Duration(milliseconds: 500),
-                                      imageUrl: getCORSProxyUrl(
-                                        path,
-                                      ),
+                                      imageUrl: path,
                                       width: 120.0,
                                       height: 100.0,
                                       fit: BoxFit.cover,

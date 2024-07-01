@@ -159,11 +159,9 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
                               child: CachedNetworkImage(
                                 fadeInDuration: const Duration(milliseconds: 200),
                                 fadeOutDuration: const Duration(milliseconds: 200),
-                                imageUrl: getCORSProxyUrl(
-                                  valueOrDefault<String>(
-                                    currentUserPhoto,
-                                    'https://images.unsplash.com/photo-1499887142886-791eca5918cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxN3x8dXNlcnxlbnwwfHx8fDE2OTc4MjQ2MjZ8MA&ixlib=rb-4.0.3&q=80&w=400',
-                                  ),
+                                imageUrl: valueOrDefault<String>(
+                                  currentUserPhoto,
+                                  'https://images.unsplash.com/photo-1499887142886-791eca5918cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxN3x8dXNlcnxlbnwwfHx8fDE2OTc4MjQ2MjZ8MA&ixlib=rb-4.0.3&q=80&w=400',
                                 ),
                                 width: 300.0,
                                 height: 200.0,
@@ -179,9 +177,7 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
                             child: CachedNetworkImage(
                               fadeInDuration: const Duration(milliseconds: 200),
                               fadeOutDuration: const Duration(milliseconds: 200),
-                              imageUrl: getCORSProxyUrl(
-                                _model.uploadedFileUrl,
-                              ),
+                              imageUrl: _model.uploadedFileUrl,
                               width: 300.0,
                               height: 200.0,
                               fit: BoxFit.cover,
@@ -201,6 +197,7 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     final selectedMedia = await selectMedia(
+                      imageQuality: 80,
                       mediaSource: MediaSource.photoGallery,
                       multiImage: false,
                     );

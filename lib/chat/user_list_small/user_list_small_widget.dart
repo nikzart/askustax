@@ -73,7 +73,12 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                 height: 40.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).accent1,
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                  ),
                   border: Border.all(
                     color: FlutterFlowTheme.of(context).primary,
                     width: 2.0,
@@ -84,9 +89,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
-                      getCORSProxyUrl(
-                        widget.userRef!.photoUrl,
-                      ),
+                      widget.userRef!.photoUrl,
                       width: 32.0,
                       height: 32.0,
                       fit: BoxFit.cover,

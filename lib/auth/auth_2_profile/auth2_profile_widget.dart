@@ -171,9 +171,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                                     fadeInDuration: const Duration(milliseconds: 500),
                                     fadeOutDuration:
                                         const Duration(milliseconds: 500),
-                                    imageUrl: getCORSProxyUrl(
-                                      currentUserPhoto,
-                                    ),
+                                    imageUrl: currentUserPhoto,
                                     width: 100.0,
                                     height: 100.0,
                                     fit: BoxFit.cover,

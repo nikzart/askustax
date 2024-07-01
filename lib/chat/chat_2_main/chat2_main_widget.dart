@@ -330,7 +330,16 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .accent1,
                                                                         borderRadius:
-                                                                            BorderRadius.circular(12.0),
+                                                                            const BorderRadius.only(
+                                                                          bottomLeft:
+                                                                              Radius.circular(10.0),
+                                                                          bottomRight:
+                                                                              Radius.circular(10.0),
+                                                                          topLeft:
+                                                                              Radius.circular(10.0),
+                                                                          topRight:
+                                                                              Radius.circular(10.0),
+                                                                        ),
                                                                         shape: BoxShape
                                                                             .rectangle,
                                                                         border:
@@ -351,11 +360,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                               BorderRadius.circular(8.0),
                                                                           child:
                                                                               Image.network(
-                                                                            getCORSProxyUrl(
-                                                                              valueOrDefault<String>(
-                                                                                rowUsersRecord.photoUrl,
-                                                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/GzvajSxrHvi1zwJQsfLk/assets/tjm1k7ywi5dr/@3xlogoMark_outlineOnWhite.png',
-                                                                              ),
+                                                                            valueOrDefault<String>(
+                                                                              rowUsersRecord.photoUrl,
+                                                                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/GzvajSxrHvi1zwJQsfLk/assets/tjm1k7ywi5dr/@3xlogoMark_outlineOnWhite.png',
                                                                             ),
                                                                             width:
                                                                                 44.0,
@@ -574,7 +581,12 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                   height: 32.0,
                                                                                   decoration: BoxDecoration(
                                                                                     color: FlutterFlowTheme.of(context).accent1,
-                                                                                    borderRadius: BorderRadius.circular(12.0),
+                                                                                    borderRadius: const BorderRadius.only(
+                                                                                      bottomLeft: Radius.circular(10.0),
+                                                                                      bottomRight: Radius.circular(10.0),
+                                                                                      topLeft: Radius.circular(10.0),
+                                                                                      topRight: Radius.circular(10.0),
+                                                                                    ),
                                                                                     shape: BoxShape.rectangle,
                                                                                     border: Border.all(
                                                                                       color: FlutterFlowTheme.of(context).primary,
@@ -588,9 +600,7 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                       child: CachedNetworkImage(
                                                                                         fadeInDuration: const Duration(milliseconds: 300),
                                                                                         fadeOutDuration: const Duration(milliseconds: 300),
-                                                                                        imageUrl: getCORSProxyUrl(
-                                                                                          containerUsersRecord.photoUrl,
-                                                                                        ),
+                                                                                        imageUrl: containerUsersRecord.photoUrl,
                                                                                         width: 44.0,
                                                                                         height: 44.0,
                                                                                         fit: BoxFit.cover,
@@ -610,7 +620,12 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                               height: 32.0,
                                                                               decoration: BoxDecoration(
                                                                                 color: FlutterFlowTheme.of(context).accent1,
-                                                                                borderRadius: BorderRadius.circular(12.0),
+                                                                                borderRadius: const BorderRadius.only(
+                                                                                  bottomLeft: Radius.circular(10.0),
+                                                                                  bottomRight: Radius.circular(10.0),
+                                                                                  topLeft: Radius.circular(10.0),
+                                                                                  topRight: Radius.circular(10.0),
+                                                                                ),
                                                                                 shape: BoxShape.rectangle,
                                                                                 border: Border.all(
                                                                                   color: FlutterFlowTheme.of(context).primary,
@@ -622,9 +637,7 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                 child: ClipRRect(
                                                                                   borderRadius: BorderRadius.circular(8.0),
                                                                                   child: Image.network(
-                                                                                    getCORSProxyUrl(
-                                                                                      rowUsersRecord.photoUrl,
-                                                                                    ),
+                                                                                    rowUsersRecord.photoUrl,
                                                                                     width: 44.0,
                                                                                     height: 44.0,
                                                                                     fit: BoxFit.cover,

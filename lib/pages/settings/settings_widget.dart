@@ -100,9 +100,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             const Duration(milliseconds: 500),
                                         fadeOutDuration:
                                             const Duration(milliseconds: 500),
-                                        imageUrl: getCORSProxyUrl(
-                                          currentUserPhoto,
-                                        ),
+                                        imageUrl: currentUserPhoto,
                                         width: 44.0,
                                         height: 44.0,
                                         fit: BoxFit.cover,

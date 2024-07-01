@@ -1,4 +1,6 @@
 import 'dart:convert';
+import '../cloud_functions/cloud_functions.dart';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,11 +13,6 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start OpenAI ChatGPT Group Code
 
 class OpenAIChatGPTGroup {
-  static String getBaseUrl() => 'https://dify2openai4.vercel.app/v1';
-  static Map<String, String> headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-  };
   static SendFullPromptCall sendFullPromptCall = SendFullPromptCall();
 }
 
@@ -24,33 +21,18 @@ class SendFullPromptCall {
     String? apiKey = '',
     dynamic promptJson,
   }) async {
-    final baseUrl = OpenAIChatGPTGroup.getBaseUrl();
-
     final prompt = _serializeJson(promptJson);
-    final ffApiRequestBody = '''
-{
-  "model": "dify",
-  "messages": $prompt
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'Send Full Prompt',
-      apiUrl: '$baseUrl/chat/completions',
-      callType: ApiCallType.POST,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': 'Bearer $apiKey',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'SendFullPromptCall',
+        'variables': {
+          'apiKey': apiKey,
+          'prompt': prompt,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   int? createdTimestamp(dynamic response) => castToType<int>(getJsonField(
