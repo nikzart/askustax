@@ -5,6 +5,18 @@ import 'edit_profile_auth2_widget.dart' show EditProfileAuth2Widget;
 import 'package:flutter/material.dart';
 
 class EditProfileAuth2Model extends FlutterFlowModel<EditProfileAuth2Widget> {
+  ///  Local state fields for this component.
+
+  List<String> selectedServices = [];
+  void addToSelectedServices(String item) => selectedServices.add(item);
+  void removeFromSelectedServices(String item) => selectedServices.remove(item);
+  void removeAtIndexFromSelectedServices(int index) =>
+      selectedServices.removeAt(index);
+  void insertAtIndexInSelectedServices(int index, String item) =>
+      selectedServices.insert(index, item);
+  void updateSelectedServicesAtIndex(int index, Function(String) updateFn) =>
+      selectedServices[index] = updateFn(selectedServices[index]);
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();

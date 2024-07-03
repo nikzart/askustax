@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'AskUsTax',
+      title: 'ASK US TAX! – Your AI-Powered Tax Guidance Solution',
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -128,12 +128,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'main_notifications': const MainNotificationsWidget(),
       'ai_chat': const AiChatWidget(),
       'dash': const DashWidget(),
       'settings': const SettingsWidget(),
       'chat_2_main': const Chat2MainWidget(),
-      'ca_chat': const CaChatWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -158,14 +156,6 @@ class _NavBarPageState extends State<NavBarPage> {
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.notifications_rounded,
-                size: 24.0,
-              ),
-              label: '__',
-              tooltip: '',
-            ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.robot,
@@ -193,14 +183,6 @@ class _NavBarPageState extends State<NavBarPage> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.forum_outlined,
-                size: 24.0,
-              ),
-              label: '__',
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.robot,
                 size: 24.0,
               ),
               label: '__',

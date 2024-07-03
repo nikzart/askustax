@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/chat/delete_dialog/delete_dialog_widget.dart';
 import '/chat/user_list_small/user_list_small_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,6 +13,8 @@ class ChatDetailsOverlayModel
   late FlutterFlowDynamicModels<UserListSmallModel> userListSmallModels;
   // Model for deleteDialog component.
   late DeleteDialogModel deleteDialogModel;
+  // Stores action output result for [Firestore Query - Query a collection] action in deleteDialog widget.
+  UsersRecord? deleteOp;
 
   @override
   void initState(BuildContext context) {

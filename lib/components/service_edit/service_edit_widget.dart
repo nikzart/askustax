@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'service_edit_model.dart';
 export 'service_edit_model.dart';
@@ -11,10 +12,12 @@ export 'service_edit_model.dart';
 class ServiceEditWidget extends StatefulWidget {
   const ServiceEditWidget({
     super.key,
-    required this.service,
-  });
+    this.service,
+    bool? isNew,
+  }) : isNew = isNew ?? false;
 
   final ServicesRecord? service;
+  final bool isNew;
 
   @override
   State<ServiceEditWidget> createState() => _ServiceEditWidgetState();
@@ -37,19 +40,35 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
     super.initState();
     _model = createModel(context, () => ServiceEditModel());
 
-    _model.phoneNumberTextController1 ??=
-        TextEditingController(text: widget.service?.description);
-    _model.phoneNumberFocusNode1 ??= FocusNode();
+    _model.serviceNameTextController ??= TextEditingController(
+        text: widget.isNew
+            ? null
+            : valueOrDefault<String>(
+                widget.service?.name,
+                'error loading value',
+              ));
+    _model.serviceNameFocusNode ??= FocusNode();
 
-    _model.phoneNumberTextController2 ??=
-        TextEditingController(text: widget.service?.description);
-    _model.phoneNumberFocusNode2 ??= FocusNode();
+    _model.serviceDescTextController ??= TextEditingController(
+        text: widget.isNew
+            ? null
+            : valueOrDefault<String>(
+                widget.service?.description,
+                'error loading value',
+              ));
+    _model.serviceDescFocusNode ??= FocusNode();
 
-    _model.phoneNumberTextController3 ??=
-        TextEditingController(text: widget.service?.price.toString());
-    _model.phoneNumberFocusNode3 ??= FocusNode();
+    _model.servicePriceTextController ??= TextEditingController(
+        text: widget.isNew
+            ? null
+            : valueOrDefault<String>(
+                widget.service?.price.toString(),
+                'error loading value',
+              ));
+    _model.servicePriceFocusNode ??= FocusNode();
 
-    _model.switchValue = widget.service!.isActive;
+    _model.serviceIsEnabledValue =
+        widget.isNew == true ? true : widget.service!.isActive;
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -130,10 +149,12 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 0.0, 0.0),
                     child: Text(
-                      valueOrDefault<String>(
-                        widget.service?.name,
-                        'error loading value',
-                      ),
+                      widget.isNew
+                          ? 'Enter the Service details'
+                          : valueOrDefault<String>(
+                              widget.service?.name,
+                              'error loading value',
+                            ),
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
                                 fontFamily: 'Outfit',
@@ -167,8 +188,8 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 12.0),
                             child: TextFormField(
-                              controller: _model.phoneNumberTextController1,
-                              focusNode: _model.phoneNumberFocusNode1,
+                              controller: _model.serviceNameTextController,
+                              focusNode: _model.serviceNameFocusNode,
                               autofillHints: const [AutofillHints.name],
                               textCapitalization: TextCapitalization.words,
                               obscureText: false,
@@ -180,7 +201,7 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                       fontFamily: 'Plus Jakarta Sans',
                                       letterSpacing: 0.0,
                                     ),
-                                hintText: 'Your Phone Number...',
+                                hintText: 'service name',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -237,7 +258,7 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                   ),
                               cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
-                                  .phoneNumberTextController1Validator
+                                  .serviceNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -254,10 +275,10 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 12.0),
                           child: TextFormField(
-                            controller: _model.phoneNumberTextController2,
-                            focusNode: _model.phoneNumberFocusNode2,
+                            controller: _model.serviceDescTextController,
+                            focusNode: _model.serviceDescFocusNode,
                             autofillHints: const [AutofillHints.name],
-                            textCapitalization: TextCapitalization.words,
+                            textCapitalization: TextCapitalization.sentences,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Service Description',
@@ -267,7 +288,7 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                     fontFamily: 'Plus Jakarta Sans',
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Your Phone Number...',
+                              hintText: 'service description',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
@@ -321,10 +342,8 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                   fontFamily: 'Plus Jakarta Sans',
                                   letterSpacing: 0.0,
                                 ),
-                            keyboardType: TextInputType.phone,
                             cursorColor: FlutterFlowTheme.of(context).primary,
-                            validator: _model
-                                .phoneNumberTextController2Validator
+                            validator: _model.serviceDescTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -340,10 +359,10 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 12.0),
                           child: TextFormField(
-                            controller: _model.phoneNumberTextController3,
-                            focusNode: _model.phoneNumberFocusNode3,
+                            controller: _model.servicePriceTextController,
+                            focusNode: _model.servicePriceFocusNode,
                             autofillHints: const [AutofillHints.name],
-                            textCapitalization: TextCapitalization.words,
+                            textCapitalization: TextCapitalization.none,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Price',
@@ -353,7 +372,7 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                     fontFamily: 'Plus Jakarta Sans',
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Your Phone Number...',
+                              hintText: 'service price',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
@@ -407,11 +426,16 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                   fontFamily: 'Plus Jakarta Sans',
                                   letterSpacing: 0.0,
                                 ),
-                            keyboardType: TextInputType.phone,
+                            keyboardType: const TextInputType.numberWithOptions(
+                                decimal: true),
                             cursorColor: FlutterFlowTheme.of(context).primary,
                             validator: _model
-                                .phoneNumberTextController3Validator
+                                .servicePriceTextControllerValidator
                                 .asValidator(context),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                  RegExp('^\\d*.?\\d{0,2}\$'))
+                            ],
                           ),
                         ),
                       ),
@@ -440,18 +464,21 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                 ),
                           )),
                         ),
-                        Switch.adaptive(
-                          value: _model.switchValue!,
-                          onChanged: (newValue) async {
-                            setState(() => _model.switchValue = newValue);
-                          },
-                          activeColor: FlutterFlowTheme.of(context).primary,
-                          activeTrackColor:
-                              FlutterFlowTheme.of(context).accent1,
-                          inactiveTrackColor:
-                              FlutterFlowTheme.of(context).alternate,
-                          inactiveThumbColor:
-                              FlutterFlowTheme.of(context).secondaryText,
+                        Flexible(
+                          child: Switch.adaptive(
+                            value: _model.serviceIsEnabledValue!,
+                            onChanged: (newValue) async {
+                              setState(() =>
+                                  _model.serviceIsEnabledValue = newValue);
+                            },
+                            activeColor: FlutterFlowTheme.of(context).primary,
+                            activeTrackColor:
+                                FlutterFlowTheme.of(context).accent1,
+                            inactiveTrackColor:
+                                FlutterFlowTheme.of(context).accent5,
+                            inactiveThumbColor:
+                                FlutterFlowTheme.of(context).error,
+                          ),
                         ),
                       ],
                     ),
@@ -502,67 +529,131 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             ),
                           ),
                         ),
+                        if (!widget.isNew)
+                          FFButtonWidget(
+                            onPressed: () async {
+                              await widget.service!.reference.delete();
+                              Navigator.pop(context);
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Service Deleted!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            },
+                            text: 'Delete',
+                            icon: const Icon(
+                              Icons.delete,
+                              size: 20.0,
+                            ),
+                            options: FFButtonOptions(
+                              height: 44.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).error,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                              hoverColor: FlutterFlowTheme.of(context).accent5,
+                              hoverBorderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              hoverTextColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              hoverElevation: 0.0,
+                            ),
+                          ),
                         FFButtonWidget(
                           onPressed: () async {
-                            await widget.service!.reference.delete();
+                            if (widget.isNew == true) {
+                              await ServicesRecord.collection
+                                  .doc()
+                                  .set(createServicesRecordData(
+                                    name: _model.serviceNameTextController.text,
+                                    description:
+                                        _model.serviceDescTextController.text,
+                                    price: double.tryParse(
+                                        _model.servicePriceTextController.text),
+                                    type: 'A',
+                                    isActive: _model.serviceIsEnabledValue,
+                                  ));
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Added new service!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                ),
+                              );
+                            } else {
+                              await widget.service!.reference
+                                  .update(createServicesRecordData(
+                                name: _model.serviceNameTextController.text,
+                                description:
+                                    _model.serviceDescTextController.text,
+                                price: double.tryParse(
+                                    _model.servicePriceTextController.text),
+                                type: 'A',
+                                isActive: _model.serviceIsEnabledValue,
+                              ));
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Service details edit successful!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                ),
+                              );
+                            }
+
                             Navigator.pop(context);
-                            ScaffoldMessenger.of(context).clearSnackBars();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Service Deleted!',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                                duration: const Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).error,
-                              ),
-                            );
-                          },
-                          text: 'Delete',
-                          icon: const Icon(
-                            Icons.delete,
-                            size: 20.0,
-                          ),
-                          options: FFButtonOptions(
-                            height: 44.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).error,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 3.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                            hoverColor: FlutterFlowTheme.of(context).accent5,
-                            hoverBorderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            hoverTextColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            hoverElevation: 0.0,
-                          ),
-                        ),
-                        FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
                           },
                           text: 'Save',
                           icon: const Icon(

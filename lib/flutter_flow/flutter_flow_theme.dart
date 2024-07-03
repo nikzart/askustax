@@ -320,7 +320,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color info = const Color(0xFFFFFFFF);
 
   late Color background = const Color(0xFF1B1D27);
-  late Color accent5 = const Color(0xFF4D73EA);
+  late Color accent5 = const Color(0x4CFF5963);
 }
 
 extension TextStyleHelper on TextStyle {

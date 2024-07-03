@@ -27,8 +27,12 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "display_name",
+          "fieldPath": "primary_lang",
           "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "services",
+          "arrayConfig": "CONTAINS"
         }
       ]
     },

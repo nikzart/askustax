@@ -1,4 +1,4 @@
-import '/components/side_nav_widget.dart';
+import '/components/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'settings_widget.dart' show SettingsWidget;
 import 'package:flutter/material.dart';

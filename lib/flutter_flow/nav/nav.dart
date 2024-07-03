@@ -83,13 +83,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
         ),
         FFRoute(
-          name: 'main_notifications',
-          path: '/mainNotifications',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'main_notifications')
-              : const MainNotificationsWidget(),
-        ),
-        FFRoute(
           name: 'ai_chat',
           path: '/aiChat',
           builder: (context, params) => params.isEmpty
@@ -175,6 +168,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'chatRef',
               ParamType.Document,
             ),
+            service: params.getParam(
+              'service',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -195,13 +192,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'auth_2_CreateCA',
           path: '/auth2CreateCA',
           builder: (context, params) => const Auth2CreateCAWidget(),
-        ),
-        FFRoute(
-          name: 'ca_chat',
-          path: '/ca_chat',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ca_chat')
-              : const CaChatWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

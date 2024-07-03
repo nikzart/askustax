@@ -1,5 +1,5 @@
 import '/auth/edit_profile_auth_2/edit_profile_auth2_widget.dart';
-import '/components/brand_widget.dart';
+import '/components/brand/brand_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

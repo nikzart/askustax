@@ -129,72 +129,6 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await widget.action?.call();
-                    },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      curve: Curves.easeInOut,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: _model.mouseRegionHovered1
-                            ? FlutterFlowTheme.of(context).primaryBackground
-                            : FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 0.0),
-                              child: Icon(
-                                Icons.group_add_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 20.0,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Invite Users',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Divider(
-                  thickness: 1.0,
-                  color: FlutterFlowTheme.of(context).alternate,
-                ),
-                MouseRegion(
-                  opaque: false,
-                  cursor: MouseCursor.defer ?? MouseCursor.defer,
-                  onEnter: ((event) async {
-                    setState(() => _model.mouseRegionHovered2 = true);
-                  }),
-                  onExit: ((event) async {
-                    setState(() => _model.mouseRegionHovered2 = false);
-                  }),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
                       _model.showDelete = true;
                       setState(() {});
                     },
@@ -203,7 +137,7 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                       curve: Curves.easeInOut,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: _model.mouseRegionHovered2
+                        color: _model.mouseRegionHovered1
                             ? FlutterFlowTheme.of(context).primaryBackground
                             : FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -255,17 +189,17 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                     opaque: false,
                     cursor: SystemMouseCursors.click ?? MouseCursor.defer,
                     onEnter: ((event) async {
-                      setState(() => _model.mouseRegionHovered3 = true);
+                      setState(() => _model.mouseRegionHovered2 = true);
                     }),
                     onExit: ((event) async {
-                      setState(() => _model.mouseRegionHovered3 = false);
+                      setState(() => _model.mouseRegionHovered2 = false);
                     }),
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
                       curve: Curves.easeInOut,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: _model.mouseRegionHovered3
+                        color: _model.mouseRegionHovered2
                             ? FlutterFlowTheme.of(context).primaryBackground
                             : FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -312,7 +246,7 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await widget.chatList!.reference.delete();
+                                await widget.deleteAction?.call();
                               },
                               text: 'Delete',
                               options: FFButtonOptions(

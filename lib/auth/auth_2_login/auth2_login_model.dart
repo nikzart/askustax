@@ -1,4 +1,4 @@
-import '/components/brand_widget.dart';
+import '/components/brand/brand_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'auth2_login_widget.dart' show Auth2LoginWidget;
 import 'package:flutter/material.dart';

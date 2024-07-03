@@ -1,5 +1,5 @@
-import '/components/brand_widget.dart';
-import '/components/create_acc_widget.dart';
+import '/components/brand/brand_widget.dart';
+import '/components/create_acc/create_acc_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';

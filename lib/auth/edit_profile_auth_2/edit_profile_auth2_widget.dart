@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/ca_service_selector/ca_service_selector_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -541,167 +542,175 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
               ],
             ),
             if (valueOrDefault<bool>(currentUserDocument?.isCA, false))
-              AuthUserStreamWidget(
-                builder: (context) => Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 10.0, 12.0),
-                        child: TextFormField(
-                          controller: _model.iCAIRegNoTextController,
-                          focusNode: _model.iCAIRegNoFocusNode,
-                          autofillHints: const [AutofillHints.name],
-                          textCapitalization: TextCapitalization.words,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'ICAI Reg. Number',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                child: AuthUserStreamWidget(
+                  builder: (context) => Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      if (valueOrDefault<bool>(
+                          currentUserDocument?.isCA, false))
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: TextFormField(
+                              controller: _model.iCAIRegNoTextController,
+                              focusNode: _model.iCAIRegNoFocusNode,
+                              autofillHints: const [AutofillHints.name],
+                              textCapitalization: TextCapitalization.words,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'ICAI Reg. Number',
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintText: 'Your Phone Number...',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0.0,
+                                    ),
+                                errorStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: FlutterFlowTheme.of(context).error,
+                                      letterSpacing: 0.0,
+                                    ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                            hintText: 'Your Phone Number...',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                            errorStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: FlutterFlowTheme.of(context).error,
-                                  letterSpacing: 0.0,
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2.0,
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 12.0, 0.0, 12.0),
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            filled: true,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 12.0, 0.0, 12.0),
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     letterSpacing: 0.0,
                                   ),
-                          cursorColor: FlutterFlowTheme.of(context).primary,
-                          validator: _model.iCAIRegNoTextControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 20.0, 12.0),
-                        child: TextFormField(
-                          controller: _model.aadhaarTextController,
-                          focusNode: _model.aadhaarFocusNode,
-                          autofillHints: const [AutofillHints.name],
-                          textCapitalization: TextCapitalization.words,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Aadhar Number',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
-                                ),
-                            hintText: 'Your Aadhaar Number...',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
-                                ),
-                            errorStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: FlutterFlowTheme.of(context).error,
-                                  letterSpacing: 0.0,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
+                              validator: _model.iCAIRegNoTextControllerValidator
+                                  .asValidator(context),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            filled: true,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 12.0, 0.0, 12.0),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                        ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 12.0),
+                          child: TextFormField(
+                            controller: _model.aadhaarTextController,
+                            focusNode: _model.aadhaarFocusNode,
+                            autofillHints: const [AutofillHints.name],
+                            textCapitalization: TextCapitalization.words,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Aadhar Number',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     letterSpacing: 0.0,
                                   ),
-                          keyboardType: TextInputType.number,
-                          cursorColor: FlutterFlowTheme.of(context).primary,
-                          validator: _model.aadhaarTextControllerValidator
-                              .asValidator(context),
+                              hintText: 'Your Aadhaar Number...',
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    letterSpacing: 0.0,
+                                  ),
+                              errorStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 12.0, 0.0, 12.0),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  letterSpacing: 0.0,
+                                ),
+                            keyboardType: TextInputType.number,
+                            cursorColor: FlutterFlowTheme.of(context).primary,
+                            validator: _model.aadhaarTextControllerValidator
+                                .asValidator(context),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ].divide(const SizedBox(width: 20.0)),
+                  ),
                 ),
               ),
             Row(
@@ -807,6 +816,61 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
                 ),
               ],
             ),
+            if (valueOrDefault<bool>(currentUserDocument?.isCA, false))
+              AuthUserStreamWidget(
+                builder: (context) => Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 12.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: const CaServiceSelectorWidget(),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+                            },
+                            text: 'Select services you provide',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 44.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).alternate,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
               child: AuthUserStreamWidget(

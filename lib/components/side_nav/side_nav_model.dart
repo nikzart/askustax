@@ -1,4 +1,5 @@
-import '/components/credits_widget.dart';
+import '/backend/backend.dart';
+import '/components/credits/credits_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'side_nav_widget.dart' show SideNavWidget;
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class SideNavModel extends FlutterFlowModel<SideNavWidget> {
   bool mouseRegionHovered3 = false;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered4 = false;
+  // Stores action output result for [Backend Call - Read Document] action in contentView_1 widget.
+  ChatsRecord? activeChat;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered5 = false;
   // Model for credits component.

@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
-import '/components/empty_widget.dart';
-import '/components/profile_view_widget.dart';
+import '/components/empty/empty_widget.dart';
+import '/components/profile_view/profile_view_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

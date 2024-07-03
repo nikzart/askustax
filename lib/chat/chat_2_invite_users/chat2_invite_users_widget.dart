@@ -18,9 +18,11 @@ class Chat2InviteUsersWidget extends StatefulWidget {
   const Chat2InviteUsersWidget({
     super.key,
     this.chatRef,
+    this.service,
   });
 
   final ChatsRecord? chatRef;
+  final String? service;
 
   @override
   State<Chat2InviteUsersWidget> createState() => _Chat2InviteUsersWidgetState();
@@ -78,53 +80,61 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
                 automaticallyImplyLeading: false,
-                title: Column(
+                title: Row(
                   mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Connect with CA',
-                      style:
-                          FlutterFlowTheme.of(context).headlineSmall.override(
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Connect with CA',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
                                 fontFamily: 'Outfit',
                                 letterSpacing: 0.0,
                               ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 4.0, 0.0, 0.0),
+                          child: Text(
+                            'Select users from below to start a chat.',
+                            style: FlutterFlowTheme.of(context)
+                                .labelSmall
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                      child: Text(
-                        'Select users from below to start a chat.',
-                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              letterSpacing: 0.0,
-                            ),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 4.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: FlutterFlowTheme.of(context).alternate,
+                        borderRadius: 12.0,
+                        borderWidth: 1.0,
+                        buttonSize: 44.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        icon: Icon(
+                          Icons.close_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          context.safePop();
+                        },
                       ),
                     ),
                   ],
                 ),
-                actions: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 4.0),
-                    child: FlutterFlowIconButton(
-                      borderColor: FlutterFlowTheme.of(context).alternate,
-                      borderRadius: 12.0,
-                      borderWidth: 1.0,
-                      buttonSize: 44.0,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      icon: Icon(
-                        Icons.close_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        context.safePop();
-                      },
-                    ),
-                  ),
-                ],
+                actions: const [],
                 centerTitle: false,
                 elevation: 0.0,
               )
@@ -135,6 +145,69 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (responsiveVisibility(
+                  context: context,
+                  phone: false,
+                  tablet: false,
+                ))
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Connect with CA',
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 4.0, 0.0, 0.0),
+                              child: Text(
+                                'Select users from below to start a chat.',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 8.0, 0.0, 4.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: FlutterFlowTheme.of(context).alternate,
+                            borderRadius: 12.0,
+                            borderWidth: 1.0,
+                            buttonSize: 44.0,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            icon: Icon(
+                              Icons.close_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                   child: Row(
@@ -192,226 +265,242 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                   child: Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                    child:
-                        PagedListView<DocumentSnapshot<Object?>?, UsersRecord>(
-                      pagingController: _model.setListViewController(
-                        UsersRecord.collection
-                            .where(
-                              'is_CA',
-                              isEqualTo: true,
-                            )
-                            .where(
-                              'verified_CA',
-                              isEqualTo: true,
-                            )
-                            .orderBy('display_name'),
-                      ),
-                      padding: const EdgeInsets.fromLTRB(
-                        0,
-                        0,
-                        0,
-                        160.0,
-                      ),
-                      reverse: false,
-                      scrollDirection: Axis.vertical,
-                      builderDelegate: PagedChildBuilderDelegate<UsersRecord>(
-                        // Customize what your widget looks like when it's loading the first page.
-                        firstPageProgressIndicatorBuilder: (_) => Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                    child: AuthUserStreamWidget(
+                      builder: (context) => PagedListView<
+                          DocumentSnapshot<Object?>?, UsersRecord>(
+                        pagingController: _model.setListViewController(
+                          UsersRecord.collection
+                              .where(
+                                'is_CA',
+                                isEqualTo: true,
+                              )
+                              .where(
+                                'verified_CA',
+                                isEqualTo: true,
+                              )
+                              .where(
+                                'primary_lang',
+                                isEqualTo: valueOrDefault(
+                                    currentUserDocument?.primaryLang, ''),
+                              )
+                              .where(
+                                'services',
+                                arrayContains: widget.service,
+                              ),
+                        ),
+                        padding: const EdgeInsets.fromLTRB(
+                          0,
+                          0,
+                          0,
+                          160.0,
+                        ),
+                        reverse: false,
+                        scrollDirection: Axis.vertical,
+                        builderDelegate: PagedChildBuilderDelegate<UsersRecord>(
+                          // Customize what your widget looks like when it's loading the first page.
+                          firstPageProgressIndicatorBuilder: (_) => Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        // Customize what your widget looks like when it's loading another page.
-                        newPageProgressIndicatorBuilder: (_) => Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                          // Customize what your widget looks like when it's loading another page.
+                          newPageProgressIndicatorBuilder: (_) => Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        noItemsFoundIndicatorBuilder: (_) =>
-                            EmptyStateSimpleWidget(
-                          icon: Icon(
-                            Icons.groups_outlined,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 90.0,
+                          noItemsFoundIndicatorBuilder: (_) =>
+                              EmptyStateSimpleWidget(
+                            icon: Icon(
+                              Icons.groups_outlined,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 90.0,
+                            ),
+                            title: 'No Friends',
+                            body: 'No users exist to create a chat with.',
                           ),
-                          title: 'No Friends',
-                          body: 'No users exist to create a chat with.',
-                        ),
-                        itemBuilder: (context, _, listViewIndex) {
-                          final listViewUsersRecord = _model
-                              .listViewPagingController!
-                              .itemList![listViewIndex];
-                          return Visibility(
-                            visible: listViewUsersRecord.reference !=
-                                currentUserReference,
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 8.0),
-                              child: Container(
-                                width: 100.0,
-                                height: 70.0,
-                                decoration: BoxDecoration(
-                                  color: _model.friendsList.contains(
-                                          listViewUsersRecord.reference)
-                                      ? FlutterFlowTheme.of(context).accent1
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  border: Border.all(
+                          itemBuilder: (context, _, listViewIndex) {
+                            final listViewUsersRecord = _model
+                                .listViewPagingController!
+                                .itemList![listViewIndex];
+                            return Visibility(
+                              visible: listViewUsersRecord.reference !=
+                                  currentUserReference,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 8.0),
+                                child: Container(
+                                  width: 100.0,
+                                  height: 70.0,
+                                  decoration: BoxDecoration(
                                     color: _model.friendsList.contains(
                                             listViewUsersRecord.reference)
-                                        ? FlutterFlowTheme.of(context).primary
+                                        ? FlutterFlowTheme.of(context).accent1
                                         : FlutterFlowTheme.of(context)
-                                            .alternate,
-                                    width: 1.0,
+                                            .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(
+                                      color: _model.friendsList.contains(
+                                              listViewUsersRecord.reference)
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : FlutterFlowTheme.of(context)
+                                              .alternate,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 0.0, 0.0),
+                                        child: Container(
+                                          width: 44.0,
+                                          height: 44.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                            borderRadius: const BorderRadius.only(
+                                              bottomLeft: Radius.circular(10.0),
+                                              bottomRight:
+                                                  Radius.circular(10.0),
+                                              topLeft: Radius.circular(10.0),
+                                              topRight: Radius.circular(10.0),
+                                            ),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(2.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    const Duration(milliseconds: 200),
+                                                fadeOutDuration:
+                                                    const Duration(milliseconds: 200),
+                                                imageUrl: listViewUsersRecord
+                                                    .photoUrl,
+                                                width: 44.0,
+                                                height: 44.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Theme(
+                                          data: ThemeData(
+                                            unselectedWidgetColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
+                                          ),
+                                          child: CheckboxListTile(
+                                            value:
+                                                _model.checkboxListTileValueMap[
+                                                        listViewUsersRecord] ??=
+                                                    _model.friendsList.contains(
+                                                            listViewUsersRecord
+                                                                .reference) ==
+                                                        true,
+                                            onChanged: (newValue) async {
+                                              setState(() =>
+                                                  _model.checkboxListTileValueMap[
+                                                          listViewUsersRecord] =
+                                                      newValue!);
+                                              if (newValue!) {
+                                                // addUser
+                                                _model.addToFriendsList(
+                                                    listViewUsersRecord
+                                                        .reference);
+                                                setState(() {});
+                                              } else {
+                                                // removeUsser
+                                                _model.removeFromFriendsList(
+                                                    listViewUsersRecord
+                                                        .reference);
+                                                setState(() {});
+                                              }
+                                            },
+                                            title: Text(
+                                              valueOrDefault<String>(
+                                                listViewUsersRecord.displayName,
+                                                'Ghost User',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                        lineHeight: 2.0,
+                                                      ),
+                                            ),
+                                            subtitle: Text(
+                                              valueOrDefault<String>(
+                                                listViewUsersRecord.email,
+                                                'casper@ghost.io',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                            tileColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            checkColor: Colors.white,
+                                            dense: false,
+                                            controlAffinity:
+                                                ListTileControlAffinity
+                                                    .trailing,
+                                            contentPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 8.0, 0.0),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 44.0,
-                                        height: 44.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          borderRadius: const BorderRadius.only(
-                                            bottomLeft: Radius.circular(10.0),
-                                            bottomRight: Radius.circular(10.0),
-                                            topLeft: Radius.circular(10.0),
-                                            topRight: Radius.circular(10.0),
-                                          ),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: CachedNetworkImage(
-                                              fadeInDuration:
-                                                  const Duration(milliseconds: 200),
-                                              fadeOutDuration:
-                                                  const Duration(milliseconds: 200),
-                                              imageUrl:
-                                                  listViewUsersRecord.photoUrl,
-                                              width: 44.0,
-                                              height: 44.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Theme(
-                                        data: ThemeData(
-                                          unselectedWidgetColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                        ),
-                                        child: CheckboxListTile(
-                                          value:
-                                              _model.checkboxListTileValueMap[
-                                                      listViewUsersRecord] ??=
-                                                  _model.friendsList.contains(
-                                                          listViewUsersRecord
-                                                              .reference) ==
-                                                      true,
-                                          onChanged: (newValue) async {
-                                            setState(() =>
-                                                _model.checkboxListTileValueMap[
-                                                        listViewUsersRecord] =
-                                                    newValue!);
-                                            if (newValue!) {
-                                              // addUser
-                                              _model.addToFriendsList(
-                                                  listViewUsersRecord
-                                                      .reference);
-                                              setState(() {});
-                                            } else {
-                                              // removeUsser
-                                              _model.removeFromFriendsList(
-                                                  listViewUsersRecord
-                                                      .reference);
-                                              setState(() {});
-                                            }
-                                          },
-                                          title: Text(
-                                            valueOrDefault<String>(
-                                              listViewUsersRecord.displayName,
-                                              'Ghost User',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  letterSpacing: 0.0,
-                                                  lineHeight: 2.0,
-                                                ),
-                                          ),
-                                          subtitle: Text(
-                                            valueOrDefault<String>(
-                                              listViewUsersRecord.email,
-                                              'casper@ghost.io',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall
-                                                .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                          tileColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          checkColor: Colors.white,
-                                          dense: false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.trailing,
-                                          contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 8.0, 0.0),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -511,6 +600,12 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                               },
                             ),
                           }, chatsRecordReference);
+
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            inActiveChat: true,
+                            activeChat: _model.newChatThread?.reference,
+                          ));
                           if (Navigator.of(context).canPop()) {
                             context.pop();
                           }

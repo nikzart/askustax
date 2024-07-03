@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'brand_model.dart';
 export 'brand_model.dart';
 
@@ -53,10 +52,10 @@ class _BrandWidgetState extends State<BrandWidget> {
           children: [
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-              child: FaIcon(
-                FontAwesomeIcons.robot,
+              child: Icon(
+                FFIcons.kblueProfessionalVirtualAssistantLogo1,
                 color: FlutterFlowTheme.of(context).info,
-                size: 30.0,
+                size: 35.0,
               ),
             ),
             Text(

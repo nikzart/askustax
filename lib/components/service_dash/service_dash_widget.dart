@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
-import '/components/empty_widget.dart';
-import '/components/service_edit_widget.dart';
+import '/components/empty/empty_widget.dart';
+import '/components/service_edit/service_edit_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -163,17 +163,41 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                             ),
                       ),
                     ),
-                  const Flexible(
+                  Flexible(
                     flex: 1,
-                    child: Opacity(
-                      opacity: 0.0,
-                      child: Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [],
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        FlutterFlowIconButton(
+                          borderColor: FlutterFlowTheme.of(context).primary,
+                          borderRadius: 20.0,
+                          borderWidth: 1.0,
+                          buttonSize: 40.0,
+                          fillColor: FlutterFlowTheme.of(context).accent1,
+                          icon: Icon(
+                            Icons.add_box,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 20.0,
+                          ),
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: const ServiceEditWidget(
+                                    isNew: true,
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          },
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
@@ -488,6 +512,7 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                                   context),
                                               child: ServiceEditWidget(
                                                 service: listViewServicesRecord,
+                                                isNew: false,
                                               ),
                                             );
                                           },

@@ -1,9 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/chat/delete_dialog/delete_dialog_widget.dart';
 import '/chat/user_list_small/user_list_small_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'chat_details_overlay_model.dart';
 export 'chat_details_overlay_model.dart';
@@ -205,7 +208,32 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                             );
                           },
                           deleteAction: () async {
-                            await widget.chatRef!.reference.delete();
+                            unawaited(
+                              () async {
+                                await widget.chatRef!.reference.delete();
+                              }(),
+                            );
+                            _model.deleteOp = await queryUsersRecordOnce(
+                              queryBuilder: (usersRecord) => usersRecord.where(
+                                'activeChat',
+                                isEqualTo: widget.chatRef?.reference,
+                              ),
+                              singleRecord: true,
+                            ).then((s) => s.firstOrNull);
+                            unawaited(
+                              () async {
+                                await _model.deleteOp!.reference.update({
+                                  ...createUsersRecordData(
+                                    inActiveChat: false,
+                                  ),
+                                  ...mapToFirestore(
+                                    {
+                                      'activeChat': FieldValue.delete(),
+                                    },
+                                  ),
+                                });
+                              }(),
+                            );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -224,18 +252,24 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                                     FlutterFlowTheme.of(context).error,
                               ),
                             );
+                            if (valueOrDefault<bool>(
+                                currentUserDocument?.isClient, false)) {
+                              context.pushNamed('ai_chat');
+                            } else {
+                              context.pushNamed(
+                                'chat_2_main',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: const TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.leftToRight,
+                                    duration: Duration(milliseconds: 220),
+                                  ),
+                                },
+                              );
+                            }
 
-                            context.pushNamed(
-                              'chat_2_main',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType:
-                                      PageTransitionType.leftToRight,
-                                  duration: Duration(milliseconds: 220),
-                                ),
-                              },
-                            );
+                            setState(() {});
                           },
                         ),
                       ),

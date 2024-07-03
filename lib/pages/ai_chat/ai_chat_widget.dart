@@ -1,4 +1,4 @@
-import '/components/side_nav_widget.dart';
+import '/components/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_p_t_component/ai_chat_component/ai_chat_component_widget.dart';

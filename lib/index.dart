@@ -1,6 +1,4 @@
 // Export pages
-export '/pages/main_notifications/main_notifications_widget.dart'
-    show MainNotificationsWidget;
 export '/pages/ai_chat/ai_chat_widget.dart' show AiChatWidget;
 export '/pages/dash/dash_widget.dart' show DashWidget;
 export '/pages/settings/settings_widget.dart' show SettingsWidget;
@@ -23,4 +21,3 @@ export '/chat/chat_2_invite_users/chat2_invite_users_widget.dart'
 export '/chat/image_details/image_details_widget.dart' show ImageDetailsWidget;
 export '/auth/auth_2_create_c_a/auth2_create_c_a_widget.dart'
     show Auth2CreateCAWidget;
-export '/pages/ca_chat/ca_chat_widget.dart' show CaChatWidget;

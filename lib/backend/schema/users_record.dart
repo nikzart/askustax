@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -145,6 +146,21 @@ class UsersRecord extends FirestoreRecord {
   String get location => _location ?? '';
   bool hasLocation() => _location != null;
 
+  // "inActiveChat" field.
+  bool? _inActiveChat;
+  bool get inActiveChat => _inActiveChat ?? false;
+  bool hasInActiveChat() => _inActiveChat != null;
+
+  // "activeChat" field.
+  DocumentReference? _activeChat;
+  DocumentReference? get activeChat => _activeChat;
+  bool hasActiveChat() => _activeChat != null;
+
+  // "services" field.
+  List<String>? _services;
+  List<String> get services => _services ?? const [];
+  bool hasServices() => _services != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -172,6 +188,9 @@ class UsersRecord extends FirestoreRecord {
     _aadhaarNo = castToType<int>(snapshotData['aadhaar_no']);
     _district = snapshotData['district'] as String?;
     _location = snapshotData['location'] as String?;
+    _inActiveChat = snapshotData['inActiveChat'] as bool?;
+    _activeChat = snapshotData['activeChat'] as DocumentReference?;
+    _services = getDataList(snapshotData['services']);
   }
 
   static CollectionReference get collection =>
@@ -234,6 +253,8 @@ Map<String, dynamic> createUsersRecordData({
   int? aadhaarNo,
   String? district,
   String? location,
+  bool? inActiveChat,
+  DocumentReference? activeChat,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -263,6 +284,8 @@ Map<String, dynamic> createUsersRecordData({
       'aadhaar_no': aadhaarNo,
       'district': district,
       'location': location,
+      'inActiveChat': inActiveChat,
+      'activeChat': activeChat,
     }.withoutNulls,
   );
 
@@ -274,6 +297,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
@@ -299,7 +323,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.verifiedCA == e2?.verifiedCA &&
         e1?.aadhaarNo == e2?.aadhaarNo &&
         e1?.district == e2?.district &&
-        e1?.location == e2?.location;
+        e1?.location == e2?.location &&
+        e1?.inActiveChat == e2?.inActiveChat &&
+        e1?.activeChat == e2?.activeChat &&
+        listEquality.equals(e1?.services, e2?.services);
   }
 
   @override
@@ -329,7 +356,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.verifiedCA,
         e?.aadhaarNo,
         e?.district,
-        e?.location
+        e?.location,
+        e?.inActiveChat,
+        e?.activeChat,
+        e?.services
       ]);
 
   @override

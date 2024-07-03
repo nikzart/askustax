@@ -1,12 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/credits_widget.dart';
+import '/backend/backend.dart';
+import '/components/credits/credits_widget.dart';
+import '/components/service_selector/service_selector_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'side_nav_model.dart';
 export 'side_nav_model.dart';
@@ -112,8 +113,8 @@ class _SideNavWidgetState extends State<SideNavWidget>
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                        child: FaIcon(
-                          FontAwesomeIcons.robot,
+                        child: Icon(
+                          FFIcons.kblueProfessionalVirtualAssistantLogo1,
                           color: FlutterFlowTheme.of(context).primary,
                           size: 30.0,
                         ),
@@ -403,8 +404,9 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.robot,
+                                    child: Icon(
+                                      FFIcons
+                                          .kblueProfessionalVirtualAssistantLogo1,
                                       color: _model.selectedNav == 2
                                           ? FlutterFlowTheme.of(context).primary
                                           : FlutterFlowTheme.of(context)
@@ -563,108 +565,143 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                       ),
-                    MouseRegion(
-                      opaque: false,
-                      cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                      onEnter: ((event) async {
-                        setState(() => _model.mouseRegionHovered4 = true);
-                      }),
-                      onExit: ((event) async {
-                        setState(() => _model.mouseRegionHovered4 = false);
-                      }),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'chat_2_InviteUsers',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
-                          },
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeInOut,
-                            width: double.infinity,
-                            height: 44.0,
-                            decoration: BoxDecoration(
-                              color: () {
-                                if (_model.mouseRegionHovered4) {
-                                  return FlutterFlowTheme.of(context)
-                                      .secondaryBackground;
-                                } else if (widget.selectedNav == 4) {
-                                  return FlutterFlowTheme.of(context).accent1;
-                                } else {
-                                  return FlutterFlowTheme.of(context)
-                                      .primaryBackground;
-                                }
-                              }(),
-                              borderRadius: BorderRadius.circular(12.0),
-                              shape: BoxShape.rectangle,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 8.0, 0.0),
-                                    child: Icon(
-                                      Icons.hail,
-                                      color: _model.selectedNav == 3
-                                          ? FlutterFlowTheme.of(context).primary
-                                          : FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                      size: 24.0,
-                                    ),
-                                  ),
-                                  if (FFAppState().navOpen == true)
-                                    Expanded(
-                                      child: Text(
-                                        'CA Chat',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              letterSpacing: 0.0,
-                                            ),
+                    if (valueOrDefault<bool>(
+                        currentUserDocument?.isClient, false))
+                      AuthUserStreamWidget(
+                        builder: (context) => MouseRegion(
+                          opaque: false,
+                          cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                          onEnter: ((event) async {
+                            setState(() => _model.mouseRegionHovered4 = true);
+                          }),
+                          onExit: ((event) async {
+                            setState(() => _model.mouseRegionHovered4 = false);
+                          }),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                if (valueOrDefault<bool>(
+                                        currentUserDocument?.inActiveChat,
+                                        false) ==
+                                    true) {
+                                  _model.activeChat =
+                                      await ChatsRecord.getDocumentOnce(
+                                          currentUserDocument!.activeChat!);
+
+                                  context.pushNamed(
+                                    'chat_2_Details',
+                                    queryParameters: {
+                                      'chatRef': serializeParam(
+                                        _model.activeChat,
+                                        ParamType.Document,
                                       ),
-                                    ),
-                                  if (FFAppState().navOpen == true)
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 2.0, 0.0),
-                                      child: Container(
-                                        height: 32.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'chatRef': _model.activeChat,
+                                    },
+                                  );
+                                } else {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: const ServiceSelectorWidget(),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                }
+
+                                setState(() {});
+                              },
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeInOut,
+                                width: double.infinity,
+                                height: 44.0,
+                                decoration: BoxDecoration(
+                                  color: () {
+                                    if (_model.mouseRegionHovered4) {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    } else if (widget.selectedNav == 4) {
+                                      return FlutterFlowTheme.of(context)
+                                          .accent1;
+                                    } else {
+                                      return FlutterFlowTheme.of(context)
+                                          .primaryBackground;
+                                    }
+                                  }(),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: Icon(
+                                          Icons.hail,
+                                          color: _model.selectedNav == 3
+                                              ? FlutterFlowTheme.of(context)
+                                                  .primary
+                                              : FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          size: 24.0,
                                         ),
-                                        child: Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 4.0, 8.0, 4.0),
-                                            child: Text(
-                                              '12',
-                                              style:
+                                      ),
+                                      if (FFAppState().navOpen == true)
+                                        Expanded(
+                                          child: Text(
+                                            'CA Chat',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      if (FFAppState().navOpen == true)
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 2.0, 0.0),
+                                          child: Container(
+                                            height: 32.0,
+                                            decoration: BoxDecoration(
+                                              color:
                                                   FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 4.0, 8.0, 4.0),
+                                                child: Text(
+                                                  '12',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
@@ -675,18 +712,19 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                                 .info,
                                                         letterSpacing: 0.0,
                                                       ),
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                ],
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                     if (FFAppState().navOpen == true)
                       Padding(
                         padding:

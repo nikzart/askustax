@@ -2,10 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/chat/chat_details_overlay/chat_details_overlay_widget.dart';
 import '/chat/chat_thread_component/chat_thread_component_widget.dart';
-import '/components/side_nav_widget.dart';
+import '/components/chat_rejection/chat_rejection_widget.dart';
+import '/components/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/instant_timer.dart';
 import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -49,6 +51,37 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
             ),
           });
         }(),
+      );
+      _model.chatCheck = InstantTimer.periodic(
+        duration: const Duration(milliseconds: 5000),
+        callback: (timer) async {
+          _model.chatRef =
+              await ChatsRecord.getDocumentOnce(widget.chatRef!.reference);
+          if (!(widget.chatRef != null)) {
+            _model.chatDeclined = true;
+            setState(() {});
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              enableDrag: false,
+              context: context,
+              builder: (context) {
+                return GestureDetector(
+                  onTap: () => _model.unfocusNode.canRequestFocus
+                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                      : FocusScope.of(context).unfocus(),
+                  child: Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: const ChatRejectionWidget(),
+                  ),
+                );
+              },
+            ).then((value) => safeSetState(() {}));
+
+            _model.chatCheck?.cancel();
+          }
+        },
+        startImmediately: true,
       );
     });
 
@@ -250,52 +283,183 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          conditionalBuilderUsersRecord
-                                                              .displayName,
-                                                          'Ghost User',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  conditionalBuilderUsersRecord
+                                                                      .displayName,
+                                                                  'Ghost User',
                                                                 ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: AutoSizeText(
-                                                          conditionalBuilderUsersRecord
-                                                              .email
-                                                              .maybeHandleOverflow(
-                                                            maxChars: 40,
-                                                            replacement: '…',
-                                                          ),
-                                                          minFontSize: 10.0,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                color: FlutterFlowTheme.of(
+                                                                style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Plus Jakarta Sans',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
                                                               ),
-                                                        ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  conditionalBuilderUsersRecord
+                                                                      .email
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        40,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
+                                                                  minFontSize:
+                                                                      10.0,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isClient,
+                                                              false))
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          20.0,
+                                                                          0.0),
+                                                              child:
+                                                                  AuthUserStreamWidget(
+                                                                builder:
+                                                                    (context) =>
+                                                                        Container(
+                                                                  height: 32.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: () {
+                                                                      if (widget
+                                                                          .chatRef!
+                                                                          .isChatAcceptedByCA) {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .accent1;
+                                                                      } else if (_model
+                                                                          .chatDeclined) {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .accent5;
+                                                                      } else {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .accent3;
+                                                                      }
+                                                                    }(),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color:
+                                                                          () {
+                                                                        if (widget
+                                                                            .chatRef!
+                                                                            .isChatAcceptedByCA) {
+                                                                          return FlutterFlowTheme.of(context)
+                                                                              .primary;
+                                                                        } else if (_model
+                                                                            .chatDeclined) {
+                                                                          return FlutterFlowTheme.of(context)
+                                                                              .error;
+                                                                        } else {
+                                                                          return FlutterFlowTheme.of(context)
+                                                                              .tertiary;
+                                                                        }
+                                                                      }(),
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                  ),
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        const AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          7.0,
+                                                                          0.0,
+                                                                          7.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        () {
+                                                                          if (widget
+                                                                              .chatRef!
+                                                                              .isChatAcceptedByCA) {
+                                                                            return 'Active';
+                                                                          } else if (_model
+                                                                              .chatDeclined) {
+                                                                            return 'Request Declined';
+                                                                          } else {
+                                                                            return 'to be accepted';
+                                                                          }
+                                                                        }(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              color: () {
+                                                                                if (widget.chatRef!.isChatAcceptedByCA) {
+                                                                                  return FlutterFlowTheme.of(context).primary;
+                                                                                } else if (_model.chatDeclined) {
+                                                                                  return FlutterFlowTheme.of(context).error;
+                                                                                } else {
+                                                                                  return FlutterFlowTheme.of(context).tertiary;
+                                                                                }
+                                                                              }(),
+                                                                              letterSpacing: 0.0,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),

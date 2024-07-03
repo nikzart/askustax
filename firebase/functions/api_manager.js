@@ -1,66 +1,13 @@
 const axios = require("axios").default;
 const qs = require("qs");
 
-/// Start OpenAI ChatGPT Group Code
-
-function createOpenAIChatGPTGroup() {
-  return {
-    baseUrl: `https://dify2openai4.vercel.app/v1`,
-    headers: {
-      "Content-Type": `application/json`,
-      "Access-Control-Allow-Origin": `*`,
-    },
-  };
-}
-
-async function _sendFullPromptCall(context, ffVariables) {
-  if (!context.auth) {
-    return _unauthenticatedResponse;
-  }
-  var apiKey = ffVariables["apiKey"];
-  var prompt = ffVariables["prompt"];
-  const openAIChatGPTGroup = createOpenAIChatGPTGroup();
-
-  var url = `${openAIChatGPTGroup.baseUrl}/chat/completions`;
-  var headers = {
-    "Content-Type": `application/json`,
-    "Access-Control-Allow-Origin": `*`,
-    Authorization: `Bearer ${apiKey}`,
-  };
-  var params = {};
-  var ffApiRequestBody = `
-{
-  "model": "dify",
-  "messages": ${prompt}
-}`;
-
-  return makeApiRequest({
-    method: "post",
-    url,
-    headers,
-    params,
-    body: createBody({
-      headers,
-      params,
-      body: ffApiRequestBody,
-      bodyType: "JSON",
-    }),
-    returnBody: true,
-    isStreamingApi: false,
-  });
-}
-
-/// End OpenAI ChatGPT Group Code
-
 /// Helper functions to route to the appropriate API Call.
 
 async function makeApiCall(context, data) {
   var callName = data["callName"] || "";
   var variables = data["variables"] || {};
 
-  const callMap = {
-    SendFullPromptCall: _sendFullPromptCall,
-  };
+  const callMap = {};
 
   if (!(callName in callMap)) {
     return {

@@ -1,6 +1,6 @@
-import '/components/ca_users_widget.dart';
-import '/components/service_dash_widget.dart';
-import '/components/side_nav_widget.dart';
+import '/components/ca_users/ca_users_widget.dart';
+import '/components/service_dash/service_dash_widget.dart';
+import '/components/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dash_widget.dart' show DashWidget;
 import 'package:flutter/material.dart';
