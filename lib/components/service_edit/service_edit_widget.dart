@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'service_edit_model.dart';
 export 'service_edit_model.dart';
 
@@ -157,8 +158,12 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             ),
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineMediumFamily,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineMediumFamily),
                               ),
                     ),
                   ),
@@ -169,10 +174,13 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                         child: Text(
                       'Service Details',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
                             fontSize: 18.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
                           ),
                     )),
                   ),
@@ -198,22 +206,37 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelMediumFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily),
                                     ),
                                 hintText: 'service name',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelMediumFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily),
                                     ),
                                 errorStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context).error,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -253,8 +276,13 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
@@ -285,22 +313,37 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
                                   ),
                               hintText: 'service description',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
                                   ),
                               errorStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context).error,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -339,8 +382,12 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                             cursorColor: FlutterFlowTheme.of(context).primary,
                             validator: _model.serviceDescTextControllerValidator
@@ -369,22 +416,37 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
                                   ),
                               hintText: 'service price',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
                                   ),
                               errorStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context).error,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -423,8 +485,12 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                             keyboardType: const TextInputType.numberWithOptions(
                                 decimal: true),
@@ -457,10 +523,14 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
                                 ),
                           )),
                         ),
@@ -508,8 +578,13 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -542,10 +617,16 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color:
                                               FlutterFlowTheme.of(context).info,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
                                         ),
                                   ),
                                   duration: const Duration(milliseconds: 4000),
@@ -569,8 +650,13 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmallFamily),
                                   ),
                               elevation: 3.0,
                               borderSide: const BorderSide(
@@ -610,10 +696,16 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color:
                                               FlutterFlowTheme.of(context).info,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
                                         ),
                                   ),
                                   duration: const Duration(milliseconds: 4000),
@@ -640,10 +732,16 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color:
                                               FlutterFlowTheme.of(context).info,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
                                         ),
                                   ),
                                   duration: const Duration(milliseconds: 4000),
@@ -670,8 +768,12 @@ class _ServiceEditWidgetState extends State<ServiceEditWidget>
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleSmallFamily),
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'brand_model.dart';
 export 'brand_model.dart';
 
@@ -38,7 +39,7 @@ class _BrandWidgetState extends State<BrandWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 32.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
       child: Container(
         width: 200.0,
         height: 70.0,
@@ -61,9 +62,11 @@ class _BrandWidgetState extends State<BrandWidget> {
             Text(
               'AskUsTax!',
               style: FlutterFlowTheme.of(context).displaySmall.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
                     color: FlutterFlowTheme.of(context).info,
                     letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).displaySmallFamily),
                   ),
             ),
           ],

@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'auth2_profile_model.dart';
 export 'auth2_profile_model.dart';
 
@@ -191,8 +192,12 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                     builder: (context) => Text(
                       currentUserDisplayName,
                       style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Outfit',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).displaySmallFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context)
+                                    .displaySmallFamily),
                           ),
                     ),
                   ),
@@ -205,9 +210,12 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                       'andrew@domainname.com',
                     ),
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).primary,
                           letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).labelLargeFamily),
                         ),
                   ),
                 ),
@@ -216,8 +224,11 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                   child: Text(
                     'Your Account',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).labelMediumFamily),
                         ),
                   ),
                 ),
@@ -272,8 +283,13 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily),
                                     ),
                               ),
                             ),
@@ -299,8 +315,11 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                   child: Text(
                     'App Settings',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).labelMediumFamily),
                         ),
                   ),
                 ),
@@ -347,8 +366,13 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelLargeFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelLargeFamily),
                                   ),
                             ),
                           ),
@@ -411,8 +435,13 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelLargeFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelLargeFamily),
                                   ),
                             ),
                           ),
@@ -454,11 +483,15 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primaryBackground,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyLarge.override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyLarge
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyLargeFamily,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyLargeFamily),
+                            ),
                         elevation: 0.0,
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).alternate,

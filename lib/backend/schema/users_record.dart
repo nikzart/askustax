@@ -161,6 +161,11 @@ class UsersRecord extends FirestoreRecord {
   List<String> get services => _services ?? const [];
   bool hasServices() => _services != null;
 
+  // "noti_count" field.
+  int? _notiCount;
+  int get notiCount => _notiCount ?? 0;
+  bool hasNotiCount() => _notiCount != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -191,6 +196,7 @@ class UsersRecord extends FirestoreRecord {
     _inActiveChat = snapshotData['inActiveChat'] as bool?;
     _activeChat = snapshotData['activeChat'] as DocumentReference?;
     _services = getDataList(snapshotData['services']);
+    _notiCount = castToType<int>(snapshotData['noti_count']);
   }
 
   static CollectionReference get collection =>
@@ -255,6 +261,7 @@ Map<String, dynamic> createUsersRecordData({
   String? location,
   bool? inActiveChat,
   DocumentReference? activeChat,
+  int? notiCount,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -286,6 +293,7 @@ Map<String, dynamic> createUsersRecordData({
       'location': location,
       'inActiveChat': inActiveChat,
       'activeChat': activeChat,
+      'noti_count': notiCount,
     }.withoutNulls,
   );
 
@@ -326,7 +334,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.location == e2?.location &&
         e1?.inActiveChat == e2?.inActiveChat &&
         e1?.activeChat == e2?.activeChat &&
-        listEquality.equals(e1?.services, e2?.services);
+        listEquality.equals(e1?.services, e2?.services) &&
+        e1?.notiCount == e2?.notiCount;
   }
 
   @override
@@ -359,7 +368,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.location,
         e?.inActiveChat,
         e?.activeChat,
-        e?.services
+        e?.services,
+        e?.notiCount
       ]);
 
   @override

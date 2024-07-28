@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'service_dash_model.dart';
 export 'service_dash_model.dart';
 
@@ -47,27 +48,6 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
-          child: Text(
-            'Services',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
-                  letterSpacing: 0.0,
-                ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
-          child: Text(
-            'edit or add services',
-            textAlign: TextAlign.start,
-            style: FlutterFlowTheme.of(context).labelMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
-                  letterSpacing: 0.0,
-                ),
-          ),
-        ),
-        Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(40.0, 12.0, 40.0, 0.0),
           child: Container(
             width: double.infinity,
@@ -93,11 +73,14 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                     child: Text(
                       'Service Name',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
                           ),
                     ),
                   ),
@@ -115,11 +98,15 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                         style: FlutterFlowTheme.of(context)
                             .labelMedium
                             .override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .labelMediumFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 14.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .labelMediumFamily),
                             ),
                       ),
                     ),
@@ -137,11 +124,15 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                         style: FlutterFlowTheme.of(context)
                             .labelMedium
                             .override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .labelMediumFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 14.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .labelMediumFamily),
                             ),
                       ),
                     ),
@@ -155,11 +146,15 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                         'Status',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 14.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ),
@@ -238,12 +233,13 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                     ),
                   );
                 }
+
                 return ListView.separated(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemCount: listViewServicesRecordList.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 12.0),
+                  separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                   itemBuilder: (context, listViewIndex) {
                     final listViewServicesRecord =
                         listViewServicesRecordList[listViewIndex];
@@ -266,7 +262,7 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                         ),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 12.0, 16.0, 12.0),
+                              16.0, 10.0, 16.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -296,8 +292,16 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLargeFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLargeFamily),
                                             ),
                                       ),
                                     ),
@@ -309,8 +313,16 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
                                             ),
                                       ),
                                     ),
@@ -357,8 +369,16 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                                       .labelMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily),
                                                       ),
                                             ),
                                           ),
@@ -406,8 +426,16 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                                       .labelMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily),
                                                       ),
                                             ),
                                           ),
@@ -462,7 +490,9 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color: listViewServicesRecord
                                                                 .isActive
                                                             ? FlutterFlowTheme
@@ -472,6 +502,12 @@ class _ServiceDashWidgetState extends State<ServiceDashWidget> {
                                                                     .of(context)
                                                                 .error,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                       ),
                                             ),
                                           ),

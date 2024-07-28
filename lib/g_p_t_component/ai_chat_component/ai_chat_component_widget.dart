@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/empty_ai_chat_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,6 +11,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'ai_chat_component_model.dart';
 export 'ai_chat_component_model.dart';
 
@@ -112,6 +114,13 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                           final chat =
                                               _model.chatHistory?.toList() ??
                                                   [];
+                                          if (chat.isEmpty) {
+                                            return const SizedBox(
+                                              width: double.infinity,
+                                              child: EmptyAiChatWidget(),
+                                            );
+                                          }
+
                                           return ListView.builder(
                                             padding: const EdgeInsets.fromLTRB(
                                               0,
@@ -268,10 +277,11 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).info,
                                                                                 fontSize: 12.0,
                                                                                 letterSpacing: 0.0,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                               ),
                                                                         ),
                                                                         duration:
@@ -320,8 +330,9 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                                 Text(
                                                                               'Copy response',
                                                                               style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                     letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -416,9 +427,11 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                         ),
                                                                   ),
                                                                 ],
@@ -515,18 +528,34 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily),
                                             ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLargeFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLargeFamily),
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -571,8 +600,14 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLargeFamily),
                                           ),
                                       maxLines: null,
                                       minLines: 1,
@@ -619,11 +654,15 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                               _model.aiResponding,
                                           onPressed: () async {
                                             var shouldSetState = false;
-                                            if (valueOrDefault(
+                                            if ((valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.credits,
+                                                        0) <=
+                                                    0) &&
+                                                !valueOrDefault<bool>(
                                                     currentUserDocument
-                                                        ?.credits,
-                                                    0) <=
-                                                0) {
+                                                        ?.isAdmin,
+                                                    false)) {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
                                                 SnackBar(
@@ -634,11 +673,19 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .info,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
                                                         ),
                                                   ),
                                                   duration: const Duration(
@@ -669,7 +716,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                     .sendFullPromptCall
                                                     .call(
                                               apiKey:
-                                                  'app-t3o3n8b4dXuovIDGR5q8FZVC',
+                                                  'app-pHLHounfXAr1Dqx4fijGzL37',
                                               promptJson: _model.chatHistory,
                                             );
 
@@ -688,11 +735,15 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                         r'''$['choices'][0]['message']''',
                                                       ));
                                               setState(() {});
-                                              if (valueOrDefault(
+                                              if ((valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.credits,
+                                                          0) >
+                                                      0) &&
+                                                  !valueOrDefault<bool>(
                                                       currentUserDocument
-                                                          ?.credits,
-                                                      0) >
-                                                  0) {
+                                                          ?.isAdmin,
+                                                      false)) {
                                                 await currentUserReference!
                                                     .update({
                                                   ...mapToFirestore(
@@ -718,11 +769,19 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .info,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
                                                         ),
                                                   ),
                                                   duration: const Duration(

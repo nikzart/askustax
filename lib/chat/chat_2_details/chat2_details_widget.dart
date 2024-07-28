@@ -13,6 +13,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat2_details_model.dart';
 export 'chat2_details_model.dart';
 
@@ -52,6 +53,10 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
           });
         }(),
       );
+
+      await currentUserReference!.update(createUsersRecordData(
+        notiCount: 0,
+      ));
       _model.chatCheck = InstantTimer.periodic(
         duration: const Duration(milliseconds: 5000),
         callback: (timer) async {
@@ -116,6 +121,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                     updateCallback: () => setState(() {}),
                     child: const SideNavWidget(
                       selectedNav: 4,
+                      notifCount: 0,
                     ),
                   ),
                   Expanded(
@@ -153,8 +159,14 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
-                                          fontFamily: 'Outfit',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMediumFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMediumFamily),
                                         ),
                                   ),
                                 ),
@@ -166,8 +178,14 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily),
                                         ),
                                   ),
                                 ),
@@ -194,11 +212,14 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                         ),
                                       );
                                     }
+
                                     final conditionalBuilderUsersRecord =
                                         snapshot.data!;
+
                                     return Builder(
                                       builder: (context) {
-                                        if (widget.chatRef!.users.length <= 2) {
+                                        if (widget.chatRef!.users.length <=
+                                            2) {
                                           return Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
@@ -310,9 +331,14 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                     .bodyLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyLargeFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyLargeFamily),
                                                                     ),
                                                               ),
                                                               Padding(
@@ -340,11 +366,13 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                       .labelSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                       ),
                                                                 ),
                                                               ),
@@ -441,7 +469,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: () {
                                                                                 if (widget.chatRef!.isChatAcceptedByCA) {
                                                                                   return FlutterFlowTheme.of(context).primary;
@@ -452,6 +480,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                                 }
                                                                               }(),
                                                                               letterSpacing: 0.0,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                             ),
                                                                       ),
                                                                     ),
@@ -582,8 +611,10 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                 ),
                                                               );
                                                             }
+
                                                             final secondUserUsersRecord =
                                                                 snapshot.data!;
+
                                                             return Container(
                                                               width: 32.0,
                                                               height: 32.0,
@@ -735,14 +766,22 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                   children: [
                                                     Text(
                                                       'Group Chat',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLargeFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyLargeFamily),
+                                                              ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -764,13 +803,19 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                                     context)
                                                                 .labelSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primary,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelSmallFamily),
                                                                 ),
                                                       ),
                                                     ),

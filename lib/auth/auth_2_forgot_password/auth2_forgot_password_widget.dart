@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'auth2_forgot_password_model.dart';
 export 'auth2_forgot_password_model.dart';
 
@@ -176,22 +177,32 @@ class _Auth2ForgotPasswordWidgetState extends State<Auth2ForgotPasswordWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .displaySmallFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .displaySmallFamily),
                                     ),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 24.0),
+                                  0.0, 8.0, 0.0, 10.0),
                               child: Text(
                                 'Please fill out your email belo in order to recieve a reset password link.',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily),
                                     ),
                               ),
                             ),
@@ -211,8 +222,14 @@ class _Auth2ForgotPasswordWidgetState extends State<Auth2ForgotPasswordWidget>
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily),
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -253,8 +270,13 @@ class _Auth2ForgotPasswordWidgetState extends State<Auth2ForgotPasswordWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyLargeFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily),
                                       ),
                                   keyboardType: TextInputType.emailAddress,
                                   cursorColor:
@@ -299,9 +321,14 @@ class _Auth2ForgotPasswordWidgetState extends State<Auth2ForgotPasswordWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color: Colors.white,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
                                       ),
                                   elevation: 3.0,
                                   borderSide: const BorderSide(

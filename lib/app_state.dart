@@ -30,7 +30,7 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  bool _navOpen = false;
+  bool _navOpen = true;
   bool get navOpen => _navOpen;
   set navOpen(bool value) {
     _navOpen = value;

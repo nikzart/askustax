@@ -1,5 +1,4 @@
 import '/auth/edit_profile_auth_2/edit_profile_auth2_widget.dart';
-import '/components/brand/brand_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -104,17 +103,12 @@ class _Auth2CreateProfileWidgetState extends State<Auth2CreateProfileWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                wrapWithModel(
-                  model: _model.brandModel,
-                  updateCallback: () => setState(() {}),
-                  child: const BrandWidget(),
-                ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Container(
                     width: double.infinity,
                     constraints: const BoxConstraints(
-                      maxWidth: 570.0,
+                      maxWidth: 1000.0,
                     ),
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,

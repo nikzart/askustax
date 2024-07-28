@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat_thread_component_model.dart';
 export 'chat_thread_component_model.dart';
 
@@ -129,6 +130,7 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                     body: 'You have not sent any messages in this chat yet.',
                   );
                 }
+
                 return ListView.builder(
                   padding: const EdgeInsets.fromLTRB(
                     0,
@@ -386,7 +388,8 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                           .getDocumentFromData(
                                               createChatMessagesRecordData(
                                                 user: currentUserReference,
-                                                chat: widget.chatRef?.reference,
+                                                chat:
+                                                    widget.chatRef?.reference,
                                                 text:
                                                     _model.textController.text,
                                                 timestamp: getCurrentTimestamp,
@@ -443,24 +446,42 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily),
                                           ),
                                       hintText: 'Start typing here...',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelSmallFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmallFamily),
                                           ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -505,8 +526,14 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                         ),
                                     maxLines: 12,
                                     minLines: 1,
@@ -537,85 +564,105 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                       size: 20.0,
                                     ),
                                     onPressed: () async {
-                                      final firestoreBatch =
-                                          FirebaseFirestore.instance.batch();
-                                      try {
-                                        if (_model.formKey.currentState ==
-                                                null ||
-                                            !_model.formKey.currentState!
-                                                .validate()) {
-                                          return;
-                                        }
-                                        // newChatMessage
+                                      await Future.wait([
+                                        Future(() async {
+                                          if (_model.formKey.currentState ==
+                                                  null ||
+                                              !_model.formKey.currentState!
+                                                  .validate()) {
+                                            return;
+                                          }
+                                          // newChatMessage
 
-                                        var chatMessagesRecordReference =
-                                            ChatMessagesRecord.collection.doc();
-                                        firestoreBatch.set(
-                                            chatMessagesRecordReference,
-                                            createChatMessagesRecordData(
-                                              user: currentUserReference,
-                                              chat: widget.chatRef?.reference,
-                                              text: _model.textController.text,
-                                              timestamp: getCurrentTimestamp,
-                                              image: _model.uploadedFileUrl,
-                                            ));
-                                        _model.newChat = ChatMessagesRecord
-                                            .getDocumentFromData(
-                                                createChatMessagesRecordData(
-                                                  user: currentUserReference,
-                                                  chat:
-                                                      widget.chatRef?.reference,
-                                                  text: _model
-                                                      .textController.text,
-                                                  timestamp:
-                                                      getCurrentTimestamp,
-                                                  image: _model.uploadedFileUrl,
-                                                ),
-                                                chatMessagesRecordReference);
-                                        // clearUsers
-                                        _model.lastSeenBy = [];
-                                        // In order to add a single user reference to a list of user references we are adding our current user reference to a page state.
-                                        //
-                                        // We will then set the value of the user reference list from this page state.
-                                        // addMyUserToList
-                                        _model.addToLastSeenBy(
-                                            currentUserReference!);
-                                        // updateChatDocument
+                                          var chatMessagesRecordReference =
+                                              ChatMessagesRecord.collection
+                                                  .doc();
+                                          await chatMessagesRecordReference
+                                              .set(createChatMessagesRecordData(
+                                            user: currentUserReference,
+                                            chat: widget.chatRef?.reference,
+                                            text: _model.textController.text,
+                                            timestamp: getCurrentTimestamp,
+                                            image: _model.uploadedFileUrl,
+                                          ));
+                                          _model.newChat = ChatMessagesRecord
+                                              .getDocumentFromData(
+                                                  createChatMessagesRecordData(
+                                                    user: currentUserReference,
+                                                    chat: widget
+                                                        .chatRef?.reference,
+                                                    text: _model
+                                                        .textController.text,
+                                                    timestamp:
+                                                        getCurrentTimestamp,
+                                                    image:
+                                                        _model.uploadedFileUrl,
+                                                  ),
+                                                  chatMessagesRecordReference);
+                                          // clearUsers
+                                          _model.lastSeenBy = [];
+                                          // In order to add a single user reference to a list of user references we are adding our current user reference to a page state.
+                                          //
+                                          // We will then set the value of the user reference list from this page state.
+                                          // addMyUserToList
+                                          _model.addToLastSeenBy(
+                                              currentUserReference!);
+                                          // updateChatDocument
 
-                                        firestoreBatch
-                                            .update(widget.chatRef!.reference, {
-                                          ...createChatsRecordData(
-                                            lastMessageTime:
-                                                getCurrentTimestamp,
-                                            lastMessageSentBy:
-                                                currentUserReference,
-                                            lastMessage:
-                                                _model.textController.text,
-                                          ),
-                                          ...mapToFirestore(
-                                            {
-                                              'last_message_seen_by':
-                                                  _model.lastSeenBy,
-                                            },
-                                          ),
-                                        });
-                                        setState(() {
-                                          _model.textController?.clear();
-                                        });
-                                        setState(() {
-                                          _model.isDataUploading = false;
-                                          _model.uploadedLocalFile =
-                                              FFUploadedFile(
-                                                  bytes:
-                                                      Uint8List.fromList([]));
-                                          _model.uploadedFileUrl = '';
-                                        });
+                                          await widget.chatRef!.reference
+                                              .update({
+                                            ...createChatsRecordData(
+                                              lastMessageTime:
+                                                  getCurrentTimestamp,
+                                              lastMessageSentBy:
+                                                  currentUserReference,
+                                              lastMessage:
+                                                  _model.textController.text,
+                                            ),
+                                            ...mapToFirestore(
+                                              {
+                                                'last_message_seen_by':
+                                                    _model.lastSeenBy,
+                                              },
+                                            ),
+                                          });
+                                          setState(() {
+                                            _model.textController?.clear();
+                                          });
+                                          setState(() {
+                                            _model.isDataUploading = false;
+                                            _model.uploadedLocalFile =
+                                                FFUploadedFile(
+                                                    bytes:
+                                                        Uint8List.fromList([]));
+                                            _model.uploadedFileUrl = '';
+                                          });
 
-                                        _model.imagesUploaded = [];
-                                        setState(() {});
-                                      } finally {
-                                        await firestoreBatch.commit();
-                                      }
+                                          _model.imagesUploaded = [];
+                                          setState(() {});
+                                        }),
+                                        Future(() async {
+                                          await () {
+                                            if (widget.chatRef?.userA ==
+                                                currentUserReference) {
+                                              return widget.chatRef!.userB!;
+                                            } else if (widget.chatRef?.userB ==
+                                                currentUserReference) {
+                                              return widget.chatRef!.userA!;
+                                            } else {
+                                              return widget.chatRef!.userA!;
+                                            }
+                                          }()
+                                              .update({
+                                            ...mapToFirestore(
+                                              {
+                                                'noti_count':
+                                                    FieldValue.increment(1),
+                                              },
+                                            ),
+                                          });
+                                        }),
+                                      ]);
 
                                       setState(() {});
                                     },

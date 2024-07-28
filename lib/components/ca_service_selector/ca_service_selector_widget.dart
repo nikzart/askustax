@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'ca_service_selector_model.dart';
 export 'ca_service_selector_model.dart';
 
@@ -129,8 +130,13 @@ class _CaServiceSelectorWidgetState extends State<CaServiceSelectorWidget>
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineMediumFamily),
                                   ),
                             ),
                           ),
@@ -166,6 +172,7 @@ class _CaServiceSelectorWidgetState extends State<CaServiceSelectorWidget>
                           }
                           List<ServicesRecord> listViewServicesRecordList =
                               snapshot.data!;
+
                           return ListView.builder(
                             padding: EdgeInsets.zero,
                             scrollDirection: Axis.vertical,
@@ -202,8 +209,14 @@ class _CaServiceSelectorWidgetState extends State<CaServiceSelectorWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLargeFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLargeFamily),
                                         ),
                                   ),
                                   subtitle: Text(
@@ -211,8 +224,14 @@ class _CaServiceSelectorWidgetState extends State<CaServiceSelectorWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily),
                                         ),
                                   ),
                                   tileColor: FlutterFlowTheme.of(context)
@@ -268,8 +287,13 @@ class _CaServiceSelectorWidgetState extends State<CaServiceSelectorWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
                                       ),
                                   elevation: 3.0,
                                   borderSide: const BorderSide(

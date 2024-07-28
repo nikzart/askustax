@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat_details_overlay_model.dart';
 export 'chat_details_overlay_model.dart';
 
@@ -103,8 +104,11 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                         )
                       ],
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
                           ),
                     ),
                   ),
@@ -114,8 +118,11 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                   child: Text(
                     'In this chat',
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Outfit',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineSmallFamily,
                           letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).headlineSmallFamily),
                         ),
                   ),
                 ),
@@ -124,6 +131,7 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                   child: Builder(
                     builder: (context) {
                       final chatUsers = widget.chatRef?.users.toList() ?? [];
+
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
@@ -148,7 +156,9 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                                   ),
                                 );
                               }
+
                               final userListSmallUsersRecord = snapshot.data!;
+
                               return wrapWithModel(
                                 model: _model.userListSmallModels.getModel(
                                   chatUsersItem.id,
@@ -241,10 +251,15 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color:
                                             FlutterFlowTheme.of(context).info,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
                                       ),
                                 ),
                                 duration: const Duration(milliseconds: 3000),
@@ -295,12 +310,16 @@ class _ChatDetailsOverlayWidgetState extends State<ChatDetailsOverlayWidget> {
                       iconPadding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleLarge.override(
-                                fontFamily: 'Plus Jakarta Sans',
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleLarge
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleLargeFamily,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleLargeFamily),
+                          ),
                       elevation: 0.0,
                       borderSide: BorderSide(
                         color: FlutterFlowTheme.of(context).alternate,

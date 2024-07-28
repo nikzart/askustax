@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'chat2_invite_users_model.dart';
 export 'chat2_invite_users_model.dart';
@@ -93,8 +94,12 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineSmallFamily,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily),
                               ),
                         ),
                         Padding(
@@ -105,8 +110,12 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .labelSmall
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelSmallFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelSmallFamily),
                                 ),
                           ),
                         ),
@@ -166,8 +175,13 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineSmallFamily),
                                   ),
                             ),
                             Padding(
@@ -178,8 +192,13 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelSmallFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmallFamily),
                                     ),
                               ),
                             ),
@@ -223,39 +242,14 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
                                 ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 0.0, 0.0),
-                        child: Text(
-                          ((valueOrDefault<int>(
-                                    _model.friendsList.length,
-                                    0,
-                                  ) -
-                                  1))
-                              .toString(),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(2.0, 12.0, 0.0, 0.0),
-                        child: Text(
-                          'Selected',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    letterSpacing: 0.0,
-                                  ),
                         ),
                       ),
                     ],
@@ -421,25 +415,28 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                                             listViewUsersRecord
                                                                 .reference) ==
                                                         true,
-                                            onChanged: (newValue) async {
-                                              setState(() =>
-                                                  _model.checkboxListTileValueMap[
-                                                          listViewUsersRecord] =
-                                                      newValue!);
-                                              if (newValue!) {
-                                                // addUser
-                                                _model.addToFriendsList(
-                                                    listViewUsersRecord
-                                                        .reference);
-                                                setState(() {});
-                                              } else {
-                                                // removeUsser
-                                                _model.removeFromFriendsList(
-                                                    listViewUsersRecord
-                                                        .reference);
-                                                setState(() {});
-                                              }
-                                            },
+                                            onChanged:
+                                                (_model.friendsList.length >= 2)
+                                                    ? null
+                                                    : (newValue) async {
+                                                        setState(() => _model
+                                                                    .checkboxListTileValueMap[
+                                                                listViewUsersRecord] =
+                                                            newValue!);
+                                                        if (newValue!) {
+                                                          // addUser
+                                                          _model.addToFriendsList(
+                                                              listViewUsersRecord
+                                                                  .reference);
+                                                          setState(() {});
+                                                        } else {
+                                                          // removeUsser
+                                                          _model.removeFromFriendsList(
+                                                              listViewUsersRecord
+                                                                  .reference);
+                                                          setState(() {});
+                                                        }
+                                                      },
                                             title: Text(
                                               valueOrDefault<String>(
                                                 listViewUsersRecord.displayName,
@@ -450,8 +447,16 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                                       .bodyLarge
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLargeFamily,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLargeFamily),
                                                         lineHeight: 2.0,
                                                       ),
                                             ),
@@ -465,12 +470,20 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                                       .labelSmall
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmallFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily),
                                                       ),
                                             ),
                                             tileColor:
@@ -479,7 +492,10 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                             activeColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
-                                            checkColor: Colors.white,
+                                            checkColor:
+                                                (_model.friendsList.length >= 2)
+                                                    ? null
+                                                    : Colors.white,
                                             dense: false,
                                             controlAffinity:
                                                 ListTileControlAffinity
@@ -630,9 +646,14 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color: FlutterFlowTheme.of(context).info,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmallFamily),
                                   ),
                             ),
                             duration: const Duration(milliseconds: 3000),
@@ -644,8 +665,9 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
 
                       setState(() {});
                     },
-                    text:
-                        widget.chatRef != null ? 'Add to Chat' : 'Send Invites',
+                    text: widget.chatRef != null
+                        ? 'Add to Chat'
+                        : 'Send Invites',
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 50.0,
@@ -654,12 +676,16 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                       iconPadding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Plus Jakarta Sans',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            color: Colors.white,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleSmallFamily),
+                          ),
                       elevation: 2.0,
                       borderSide: const BorderSide(
                         color: Colors.transparent,

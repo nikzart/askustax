@@ -7,6 +7,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'image_details_model.dart';
 export 'image_details_model.dart';
 
@@ -189,7 +190,9 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                         ),
                       );
                     }
+
                     final otherUserUsersRecord = snapshot.data!;
+
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -249,8 +252,14 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                             lineHeight: 1.5,
                                           ),
                                     )),
@@ -263,8 +272,16 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .labelSmall
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ),
@@ -283,8 +300,14 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily),
                                           lineHeight: 1.5,
                                         ),
                                   )),

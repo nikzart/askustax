@@ -1,8 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/g_p_t_component/ai_chat_component/ai_chat_component_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'ai_chat_model.dart';
 export 'ai_chat_model.dart';
 
@@ -47,11 +49,15 @@ class _AiChatWidgetState extends State<AiChatWidget> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              wrapWithModel(
-                model: _model.sideNavModel,
-                updateCallback: () => setState(() {}),
-                child: const SideNavWidget(
-                  selectedNav: 2,
+              AuthUserStreamWidget(
+                builder: (context) => wrapWithModel(
+                  model: _model.sideNavModel,
+                  updateCallback: () => setState(() {}),
+                  child: SideNavWidget(
+                    selectedNav: 2,
+                    notifCount:
+                        valueOrDefault(currentUserDocument?.notiCount, 0),
+                  ),
                 ),
               ),
               Expanded(
@@ -89,8 +95,13 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .headlineMediumFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMediumFamily),
                                     ),
                               ),
                             ),
@@ -102,12 +113,17 @@ class _AiChatWidgetState extends State<AiChatWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelMediumFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily),
                                     ),
                               ),
                             ),
-                          ].addToEnd(const SizedBox(height: 64.0)),
+                          ].addToEnd(const SizedBox(height: 30.0)),
                         ),
                         Expanded(
                           child: wrapWithModel(

@@ -85,6 +85,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ai_chat',
           path: '/aiChat',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'ai_chat')
               : const AiChatWidget(),
@@ -92,12 +93,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'dash',
           path: '/dash',
+          requireAuth: true,
           builder: (context, params) =>
               params.isEmpty ? const NavBarPage(initialPage: 'dash') : const DashWidget(),
         ),
         FFRoute(
           name: 'settings',
           path: '/settings',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'settings')
               : const SettingsWidget(),
@@ -140,6 +143,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'chat_2_Details',
           path: '/chat2Details',
+          requireAuth: true,
           asyncParams: {
             'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
           },
@@ -153,6 +157,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'chat_2_main',
           path: '/chat2Main',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'chat_2_main')
               : const Chat2MainWidget(),
@@ -160,6 +165,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'chat_2_InviteUsers',
           path: '/chat2InviteUsers',
+          requireAuth: true,
           asyncParams: {
             'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
           },
@@ -177,6 +183,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'image_Details',
           path: '/imageDetails',
+          requireAuth: true,
           asyncParams: {
             'chatMessage':
                 getDoc(['chat_messages'], ChatMessagesRecord.fromSnapshot),

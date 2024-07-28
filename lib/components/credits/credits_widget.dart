@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'credits_model.dart';
 export 'credits_model.dart';
@@ -45,12 +46,12 @@ class _CreditsWidgetState extends State<CreditsWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsets.all(14.0),
+      padding: const EdgeInsets.all(6.0),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         width: 300.0,
-        height: 100.0,
+        height: 70.0,
         decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(
@@ -75,98 +76,92 @@ class _CreditsWidgetState extends State<CreditsWidget> {
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Padding(
-              padding: EdgeInsets.all(valueOrDefault<double>(
-                FFAppState().navOpen ? 14.0 : 10.0,
-                0.0,
-              )),
-              child: Column(
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (FFAppState().navOpen)
+                  Text(
+                    'Balance',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                        ),
+                  ),
+                AuthUserStreamWidget(
+                  builder: (context) => Text(
+                    valueOrDefault(currentUserDocument?.credits, 0).toString(),
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodySmallFamily,
+                          fontSize: FFAppState().navOpen ? 32.0 : 20.0,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodySmallFamily),
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            if (FFAppState().navOpen)
+              Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  if (FFAppState().navOpen)
-                    Text(
-                      'Balance',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            color: Colors.white,
-                            letterSpacing: 0.0,
+                  Align(
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await currentUserReference!.update({
+                          ...mapToFirestore(
+                            {
+                              'credits': FieldValue.increment(10),
+                            },
                           ),
-                    ),
-                  AuthUserStreamWidget(
-                    builder: (context) => Text(
-                      valueOrDefault(currentUserDocument?.credits, 0)
-                          .toString(),
-                      style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Outfit',
-                            color: Colors.white,
-                            fontSize: FFAppState().navOpen ? 32.0 : 20.0,
-                            letterSpacing: 0.0,
-                          ),
+                        });
+                      },
+                      text: '',
+                      icon: const FaIcon(
+                        FontAwesomeIcons.shoppingCart,
+                        size: 20.0,
+                      ),
+                      options: FFButtonOptions(
+                        width: 40.0,
+                        height: 40.0,
+                        padding: const EdgeInsets.all(0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).titleSmallFamily,
+                              color: Colors.white,
+                              fontSize: 7.0,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .titleSmallFamily),
+                            ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ],
-              ),
-            ),
-            if (FFAppState().navOpen)
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                await currentUserReference!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'credits': FieldValue.increment(10),
-                                    },
-                                  ),
-                                });
-                              },
-                              text: '',
-                              icon: const FaIcon(
-                                FontAwesomeIcons.shoppingCart,
-                              ),
-                              options: FFButtonOptions(
-                                width: 900.0,
-                                height: 50.0,
-                                padding: const EdgeInsets.all(0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ),
           ],
         ),

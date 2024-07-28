@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'service_selector_model.dart';
 export 'service_selector_model.dart';
@@ -127,8 +128,12 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget>
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineSmallFamily,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily),
                               ),
                         ),
                         FlutterFlowIconButton(
@@ -267,8 +272,16 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget>
                                                         .bodyLarge
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLargeFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLargeFamily),
                                                         ),
                                               ),
                                             ),
@@ -283,8 +296,16 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget>
                                                         .labelMedium
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily),
                                                         ),
                                               ),
                                             ),
@@ -331,14 +352,22 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget>
                                                                 7.0, 0.0),
                                                     child: Text(
                                                       '₹ ${listViewServicesRecord.price.toString()}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
                                                     ),
                                                   ),
                                                 ),

@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'session_auth_model.dart';
 export 'session_auth_model.dart';
 
@@ -122,8 +123,12 @@ class _SessionAuthWidgetState extends State<SessionAuthWidget>
                       'Do you want to',
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineMediumFamily,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineMediumFamily),
                               ),
                     ),
                   ),
@@ -179,8 +184,12 @@ class _SessionAuthWidgetState extends State<SessionAuthWidget>
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleSmallFamily),
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(
@@ -229,10 +238,15 @@ class _SessionAuthWidgetState extends State<SessionAuthWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color:
                                             FlutterFlowTheme.of(context).info,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
                                       ),
                                 ),
                                 duration: const Duration(milliseconds: 3000),
@@ -259,8 +273,12 @@ class _SessionAuthWidgetState extends State<SessionAuthWidget>
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleSmallFamily),
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(
@@ -307,9 +325,14 @@ class _SessionAuthWidgetState extends State<SessionAuthWidget>
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(

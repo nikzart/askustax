@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat2_main_model.dart';
 export 'chat2_main_model.dart';
 
@@ -25,6 +27,13 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => Chat2MainModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await currentUserReference!.update(createUsersRecordData(
+        notiCount: 0,
+      ));
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -52,11 +61,15 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  wrapWithModel(
-                    model: _model.sideNavModel,
-                    updateCallback: () => setState(() {}),
-                    child: const SideNavWidget(
-                      selectedNav: 3,
+                  AuthUserStreamWidget(
+                    builder: (context) => wrapWithModel(
+                      model: _model.sideNavModel,
+                      updateCallback: () => setState(() {}),
+                      child: SideNavWidget(
+                        selectedNav: 3,
+                        notifCount:
+                            valueOrDefault(currentUserDocument?.notiCount, 0),
+                      ),
                     ),
                   ),
                   Expanded(
@@ -96,8 +109,15 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
-                                              fontFamily: 'Outfit',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(FlutterFlowTheme
+                                                          .of(context)
+                                                      .headlineMediumFamily),
                                             ),
                                       ),
                                     ),
@@ -109,8 +129,16 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
                                             ),
                                       ),
                                     ),
@@ -158,6 +186,7 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                         List<ChatsRecord>
                                             listViewChatsRecordList =
                                             snapshot.data!;
+
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
@@ -315,9 +344,11 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                     ),
                                                                   );
                                                                 }
+
                                                                 final rowUsersRecord =
                                                                     snapshot
                                                                         .data!;
+
                                                                 return Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -412,8 +443,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                       ),
                                                                                       textAlign: TextAlign.start,
                                                                                       style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                             letterSpacing: 0.0,
+                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -442,8 +474,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                 listViewChatsRecord.lastMessage,
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -457,8 +490,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                     dateTimeFormat('relative', listViewChatsRecord.lastMessageTime!),
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                           letterSpacing: 0.0,
+                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -527,9 +561,11 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                     ),
                                                                   );
                                                                 }
+
                                                                 final rowUsersRecord =
                                                                     snapshot
                                                                         .data!;
+
                                                                 return Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -572,7 +608,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                       ),
                                                                                     );
                                                                                   }
+
                                                                                   final containerUsersRecord = snapshot.data!;
+
                                                                                   return Container(
                                                                                     width: 32.0,
                                                                                     height: 32.0,
@@ -670,8 +708,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                       'Group Chat',
                                                                                       textAlign: TextAlign.start,
                                                                                       style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                             letterSpacing: 0.0,
+                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -700,8 +739,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                 listViewChatsRecord.lastMessage,
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -718,8 +758,9 @@ class _Chat2MainWidgetState extends State<Chat2MainWidget> {
                                                                                     ),
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                           letterSpacing: 0.0,
+                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                         ),
                                                                                   ),
                                                                                 ),

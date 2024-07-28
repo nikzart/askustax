@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'auth2_login_model.dart';
 export 'auth2_login_model.dart';
 
@@ -108,6 +109,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
           alignment: const AlignmentDirectional(0.0, -1.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SingleChildScrollView(
                 child: Column(
@@ -120,7 +122,8 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                       child: const BrandWidget(),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                       child: Container(
                         width: double.infinity,
                         constraints: const BoxConstraints(
@@ -144,7 +147,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                         child: Align(
                           alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(32.0),
+                            padding: const EdgeInsets.all(16.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,27 +158,38 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .displaySmallFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .displaySmallFamily),
                                       ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 24.0),
+                                      0.0, 8.0, 0.0, 10.0),
                                   child: Text(
                                     'Fill out the information below in order to access your account.',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily),
                                         ),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 16.0),
+                                      0.0, 0.0, 0.0, 10.0),
                                   child: SizedBox(
                                     width: double.infinity,
                                     child: TextFormField(
@@ -190,8 +204,16 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily),
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -236,8 +258,14 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLargeFamily),
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       cursorColor:
@@ -250,7 +278,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 16.0),
+                                      0.0, 0.0, 0.0, 10.0),
                                   child: SizedBox(
                                     width: double.infinity,
                                     child: TextFormField(
@@ -264,8 +292,16 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily),
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -326,8 +362,14 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLargeFamily),
                                           ),
                                       cursorColor:
                                           FlutterFlowTheme.of(context).primary,
@@ -369,7 +411,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                     text: 'Sign In',
                                     options: FFButtonOptions(
                                       width: double.infinity,
-                                      height: 44.0,
+                                      height: 35.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
@@ -380,9 +422,15 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
                                             color: Colors.white,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
                                       borderSide: const BorderSide(
@@ -397,22 +445,28 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 24.0),
+                                        16.0, 0.0, 16.0, 8.0),
                                     child: Text(
                                       'Or sign in with',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily),
                                           ),
                                     ),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 16.0),
+                                      0.0, 0.0, 0.0, 10.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       GoRouter.of(context).prepareAuthEvent();
@@ -433,7 +487,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                     ),
                                     options: FFButtonOptions(
                                       width: double.infinity,
-                                      height: 44.0,
+                                      height: 35.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
@@ -444,10 +498,16 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(
@@ -467,7 +527,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
+                                        0.0, 10.0, 0.0, 12.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -503,20 +563,36 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily:
-                                                        'Plus Jakarta Sans',
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primary,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: GoogleFonts
+                                                            .asMap()
+                                                        .containsKey(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily),
                                                   ),
                                             )
                                           ],
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
                                               ),
                                         ),
                                       ),
@@ -565,63 +641,79 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily:
-                                                        'Plus Jakarta Sans',
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primary,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: GoogleFonts
+                                                            .asMap()
+                                                        .containsKey(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily),
                                                   ),
                                             )
                                           ],
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
                                               ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 16.0, 0.0, 0.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      context
-                                          .pushNamed('auth_2_ForgotPassword');
-                                    },
-                                    text: 'Forgot password?',
-                                    options: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 44.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    context.pushNamed('auth_2_ForgotPassword');
+                                  },
+                                  text: 'Forgot password?',
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 44.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 0.0,
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      hoverColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      width: 2.0,
                                     ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    hoverColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
                                   ),
                                 ),
                               ],

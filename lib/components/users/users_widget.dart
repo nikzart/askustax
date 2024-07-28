@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/empty/empty_widget.dart';
 import '/components/profile_view/profile_view_widget.dart';
@@ -7,18 +8,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'ca_users_model.dart';
-export 'ca_users_model.dart';
+import 'users_model.dart';
+export 'users_model.dart';
 
-class CaUsersWidget extends StatefulWidget {
-  const CaUsersWidget({super.key});
+class UsersWidget extends StatefulWidget {
+  const UsersWidget({super.key});
 
   @override
-  State<CaUsersWidget> createState() => _CaUsersWidgetState();
+  State<UsersWidget> createState() => _UsersWidgetState();
 }
 
-class _CaUsersWidgetState extends State<CaUsersWidget> {
-  late CaUsersModel _model;
+class _UsersWidgetState extends State<UsersWidget> {
+  late UsersModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -29,7 +30,7 @@ class _CaUsersWidgetState extends State<CaUsersWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CaUsersModel());
+    _model = createModel(context, () => UsersModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -110,28 +111,6 @@ class _CaUsersWidgetState extends State<CaUsersWidget> {
                             ),
                       ),
                     ),
-                  if (responsiveVisibility(
-                    context: context,
-                    phone: false,
-                  ))
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        'Status',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).bodyMediumFamily,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 14.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily),
-                            ),
-                      ),
-                    ),
                   Flexible(
                     flex: 1,
                     child: Opacity(
@@ -166,7 +145,7 @@ class _CaUsersWidgetState extends State<CaUsersWidget> {
               stream: queryUsersRecord(
                 queryBuilder: (usersRecord) => usersRecord
                     .where(
-                      'is_CA',
+                      'is_Client',
                       isEqualTo: true,
                     )
                     .orderBy('created_time', descending: true),
@@ -186,7 +165,9 @@ class _CaUsersWidgetState extends State<CaUsersWidget> {
                     ),
                   );
                 }
-                List<UsersRecord> listViewUsersRecordList = snapshot.data!;
+                List<UsersRecord> listViewUsersRecordList = snapshot.data!
+                    .where((u) => u.uid != currentUserUid)
+                    .toList();
                 if (listViewUsersRecordList.isEmpty) {
                   return const SizedBox(
                     width: double.infinity,
@@ -345,82 +326,6 @@ class _CaUsersWidgetState extends State<CaUsersWidget> {
                                                                         context)
                                                                     .labelMediumFamily),
                                                       ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
-                                Expanded(
-                                  flex: 2,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        height: 32.0,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              listViewUsersRecord.verifiedCA ==
-                                                      true
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .accent1
-                                                  : FlutterFlowTheme.of(context)
-                                                      .accent5,
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                          border: Border.all(
-                                            color: listViewUsersRecord
-                                                        .verifiedCA ==
-                                                    true
-                                                ? FlutterFlowTheme.of(context)
-                                                    .primary
-                                                : FlutterFlowTheme.of(context)
-                                                    .error,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        child: Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    7.0, 0.0, 7.0, 0.0),
-                                            child: Text(
-                                              listViewUsersRecord.verifiedCA
-                                                  ? 'Verified'
-                                                  : 'Pending',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily,
-                                                    color: listViewUsersRecord
-                                                                .verifiedCA ==
-                                                            true
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .error,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts: GoogleFonts
-                                                            .asMap()
-                                                        .containsKey(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily),
-                                                  ),
                                             ),
                                           ),
                                         ),

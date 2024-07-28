@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'user_list_small_model.dart';
 export 'user_list_small_model.dart';
 
@@ -111,9 +112,13 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                           'Ghost User',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                       Padding(
@@ -124,12 +129,17 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                             widget.userRef?.role,
                             '--',
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                color: FlutterFlowTheme.of(context).primary,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                              ),
                         ),
                       ),
                     ],
@@ -156,8 +166,12 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                         'ME',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ),

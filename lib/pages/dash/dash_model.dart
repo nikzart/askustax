@@ -1,6 +1,7 @@
 import '/components/ca_users/ca_users_widget.dart';
 import '/components/service_dash/service_dash_widget.dart';
 import '/components/side_nav/side_nav_widget.dart';
+import '/components/users/users_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dash_widget.dart' show DashWidget;
 import 'package:flutter/material.dart';
@@ -15,8 +16,15 @@ class DashModel extends FlutterFlowModel<DashWidget> {
   final unfocusNode = FocusNode();
   // Model for sideNav component.
   late SideNavModel sideNavModel;
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
   // Model for caUsers component.
   late CaUsersModel caUsersModel;
+  // Model for Users component.
+  late UsersModel usersModel;
   // Model for serviceDash component.
   late ServiceDashModel serviceDashModel;
 
@@ -24,6 +32,7 @@ class DashModel extends FlutterFlowModel<DashWidget> {
   void initState(BuildContext context) {
     sideNavModel = createModel(context, () => SideNavModel());
     caUsersModel = createModel(context, () => CaUsersModel());
+    usersModel = createModel(context, () => UsersModel());
     serviceDashModel = createModel(context, () => ServiceDashModel());
   }
 
@@ -31,7 +40,9 @@ class DashModel extends FlutterFlowModel<DashWidget> {
   void dispose() {
     unfocusNode.dispose();
     sideNavModel.dispose();
+    tabBarController?.dispose();
     caUsersModel.dispose();
+    usersModel.dispose();
     serviceDashModel.dispose();
   }
 }

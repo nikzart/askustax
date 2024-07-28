@@ -91,10 +91,64 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(true),
+          trackVisibility: WidgetStateProperty.all(true),
+          interactive: true,
+          thickness: WidgetStateProperty.all(10.0),
+          trackColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0x336f61ef);
+            }
+            return const Color(0x336f61ef);
+          }),
+          trackBorderColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0x00000000);
+            }
+            return const Color(0x00000000);
+          }),
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
+              return const Color(0xff9461ef);
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0xff6f61ef);
+            }
+            return const Color(0xff6f61ef);
+          }),
+        ),
         useMaterial3: false,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(true),
+          trackVisibility: WidgetStateProperty.all(true),
+          interactive: true,
+          thickness: WidgetStateProperty.all(10.0),
+          trackColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0x336f61ef);
+            }
+            return const Color(0x336f61ef);
+          }),
+          trackBorderColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0x00000000);
+            }
+            return const Color(0x00000000);
+          }),
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
+              return const Color(0xff9461ef);
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0xff6f61ef);
+            }
+            return const Color(0xff6f61ef);
+          }),
+        ),
         useMaterial3: false,
       ),
       themeMode: _themeMode,

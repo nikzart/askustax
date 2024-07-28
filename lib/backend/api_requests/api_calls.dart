@@ -11,7 +11,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start OpenAI ChatGPT Group Code
 
 class OpenAIChatGPTGroup {
-  static String getBaseUrl() => 'https://uml.chira.tech/v1';
+  static String getBaseUrl() => 'https://api.chira.tech/v1';
   static Map<String, String> headers = {};
   static SendFullPromptCall sendFullPromptCall = SendFullPromptCall();
 }

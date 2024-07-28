@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/g_p_t_component/ai_chat_component/ai_chat_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat_ai_screen_model.dart';
 export 'chat_ai_screen_model.dart';
 
@@ -61,8 +62,11 @@ class _ChatAiScreenWidgetState extends State<ChatAiScreenWidget> {
                 title: Text(
                   'Ai Chat',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Outfit',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
                         letterSpacing: 0.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
                       ),
                 ),
                 actions: [

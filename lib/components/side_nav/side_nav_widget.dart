@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'side_nav_model.dart';
 export 'side_nav_model.dart';
@@ -16,9 +17,11 @@ class SideNavWidget extends StatefulWidget {
   const SideNavWidget({
     super.key,
     required this.selectedNav,
+    required this.notifCount,
   });
 
   final int? selectedNav;
+  final int? notifCount;
 
   @override
   State<SideNavWidget> createState() => _SideNavWidgetState();
@@ -103,21 +106,17 @@ class _SideNavWidgetState extends State<SideNavWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
                       alignment: const AlignmentDirectional(-1.0, 0.0),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                        child: Icon(
-                          FFIcons.kblueProfessionalVirtualAssistantLogo1,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 30.0,
-                        ),
+                      child: Icon(
+                        FFIcons.kblueProfessionalVirtualAssistantLogo1,
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 30.0,
                       ),
                     ),
                     if (FFAppState().navOpen == true)
@@ -126,12 +125,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         style: FlutterFlowTheme.of(context)
                             .displaySmall
                             .override(
-                              fontFamily: 'Outfit',
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .displaySmallFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .displaySmallFamily),
                             ),
                       ),
-                  ],
+                  ].divide(const SizedBox(width: 12.0)),
                 ),
               ),
               InkWell(
@@ -213,8 +216,14 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLargeFamily),
                                           ),
                                     ),
                                   ),
@@ -226,8 +235,14 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily),
                                           ),
                                     ),
                                   ),
@@ -251,8 +266,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                   child: Text(
                     'Platform Navigation',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).labelMediumFamily),
                         ),
                   ),
                 ),
@@ -333,8 +351,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
                                                 ),
                                           ),
                                         ),
@@ -421,8 +447,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
                                             ),
                                       ),
                                     ),
@@ -512,8 +546,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
                                                 ),
                                           ),
                                         ),
@@ -539,18 +581,30 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                     .fromSTEB(
                                                         8.0, 4.0, 8.0, 4.0),
                                                 child: Text(
-                                                  '12',
+                                                  valueOrDefault<String>(
+                                                    widget.notifCount
+                                                        ?.toString(),
+                                                    'null',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .info,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                       ),
                                                 ),
                                               ),
@@ -672,8 +726,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
                                                 ),
                                           ),
                                         ),
@@ -699,18 +761,30 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                     .fromSTEB(
                                                         8.0, 4.0, 8.0, 4.0),
                                                 child: Text(
-                                                  '12',
+                                                  valueOrDefault<String>(
+                                                    widget.notifCount
+                                                        ?.toString(),
+                                                    'null',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .info,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                       ),
                                                 ),
                                               ),
@@ -731,11 +805,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'Platform Settings',
-                          style:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    letterSpacing: 0.0,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .labelMediumFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .labelMediumFamily),
+                              ),
                         ),
                       ),
                     MouseRegion(
@@ -812,8 +891,16 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
                                             ),
                                       ),
                                     ),
@@ -827,239 +914,32 @@ class _SideNavWidgetState extends State<SideNavWidget>
                   ].divide(const SizedBox(height: 12.0)),
                 ),
               ),
-              Flexible(
-                child: wrapWithModel(
-                  model: _model.creditsModel,
-                  updateCallback: () => setState(() {}),
-                  child: const CreditsWidget(),
-                ),
-              ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      if (FFAppState().navOpen == true)
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 8.0, 0.0, 16.0),
-                            child: Container(
-                              width: 250.0,
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                borderRadius: BorderRadius.circular(12.0),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Visibility(
-                                visible: FFAppState().navOpen == true,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            setDarkModeSetting(
-                                                context, ThemeMode.light);
-                                          },
-                                          child: Container(
-                                            width: 115.0,
-                                            height: 100.0,
-                                            decoration: BoxDecoration(
-                                              color: Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryBackground
-                                                  : FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              border: Border.all(
-                                                color: valueOrDefault<Color>(
-                                                  Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                                ),
-                                                width: 1.0,
-                                              ),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.wb_sunny_rounded,
-                                                  color: Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
-                                                  size: 16.0,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Light Mode',
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              color: Theme.of(context)
-                                                                          .brightness ==
-                                                                      Brightness
-                                                                          .light
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            setDarkModeSetting(
-                                                context, ThemeMode.dark);
-                                          },
-                                          child: Container(
-                                            width: 115.0,
-                                            height: 100.0,
-                                            decoration: BoxDecoration(
-                                              color: Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.dark
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryBackground
-                                                  : FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              border: Border.all(
-                                                color: valueOrDefault<Color>(
-                                                  Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.dark
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                                ),
-                                                width: 1.0,
-                                              ),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.nightlight_round,
-                                                  color: Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.dark
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
-                                                  size: 16.0,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Dark Mode',
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              color: Theme.of(context)
-                                                                          .brightness ==
-                                                                      Brightness
-                                                                          .dark
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      Row(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: wrapWithModel(
+                        model: _model.creditsModel,
+                        updateCallback: () => setState(() {}),
+                        child: const CreditsWidget(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          if (FFAppState().navOpen == true)
+                            Expanded(
+                              child: Container(
+                                width: 100.0,
+                                height: 16.0,
+                                decoration: const BoxDecoration(),
+                              ),
+                            ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
@@ -1105,18 +985,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               animationsMap['iconOnActionTriggerAnimation']!,
                             ),
                           ),
-                          if (FFAppState().navOpen == true)
-                            Expanded(
-                              child: Container(
-                                width: 100.0,
-                                height: 16.0,
-                                decoration: const BoxDecoration(),
-                              ),
-                            ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

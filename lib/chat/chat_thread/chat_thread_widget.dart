@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'chat_thread_model.dart';
 export 'chat_thread_model.dart';
 
@@ -94,7 +95,9 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                         ),
                       );
                     }
+
                     final otherUserUsersRecord = snapshot.data!;
+
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,8 +157,14 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                             lineHeight: 1.5,
                                           ),
                                     )),
@@ -173,8 +182,16 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .labelSmall
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ),
@@ -193,8 +210,14 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily),
                                           lineHeight: 1.5,
                                         ),
                                   )),
@@ -354,8 +377,14 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                           lineHeight: 1.5,
                                         ),
                                   )),
@@ -372,8 +401,14 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .labelSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmallFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmallFamily),
                                         ),
                                   ),
                                 ),
@@ -391,8 +426,13 @@ class _ChatThreadWidgetState extends State<ChatThreadWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily),
                                     ),
                               )),
                             ),
