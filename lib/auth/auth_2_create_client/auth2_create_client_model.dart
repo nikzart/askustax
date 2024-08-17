@@ -1,5 +1,5 @@
 import '/components/brand/brand_widget.dart';
-import '/components/create_acc/create_acc_widget.dart';
+import '/components/create_acc_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'auth2_create_client_widget.dart' show Auth2CreateClientWidget;
 import 'package:flutter/material.dart';
@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class Auth2CreateClientModel extends FlutterFlowModel<Auth2CreateClientWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for brand component.
   late BrandModel brandModel;
   // Model for createAcc component.
@@ -21,7 +20,6 @@ class Auth2CreateClientModel extends FlutterFlowModel<Auth2CreateClientWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     brandModel.dispose();
     createAccModel.dispose();
   }

@@ -19,10 +19,16 @@ class SideNavModel extends FlutterFlowModel<SideNavWidget> {
   bool mouseRegionHovered3 = false;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered4 = false;
+  // State field(s) for MouseRegion widget.
+  bool mouseRegionHovered5 = false;
+  // State field(s) for MouseRegion widget.
+  bool mouseRegionHovered6 = false;
   // Stores action output result for [Backend Call - Read Document] action in contentView_1 widget.
   ChatsRecord? activeChat;
   // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered5 = false;
+  bool mouseRegionHovered7 = false;
+  // State field(s) for MouseRegion widget.
+  bool mouseRegionHovered8 = false;
   // Model for credits component.
   late CreditsModel creditsModel;
 

@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/components/brand/brand_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -87,9 +88,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -475,6 +474,11 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                       if (user == null) {
                                         return;
                                       }
+
+                                      await currentUserReference!
+                                          .update(createUsersRecordData(
+                                        isClient: true,
+                                      ));
 
                                       context.goNamedAuth(
                                           'auth_2_createProfile',

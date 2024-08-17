@@ -307,7 +307,7 @@ class _UsersWidgetState extends State<UsersWidget> {
                                                     7.0, 0.0, 7.0, 0.0),
                                             child: Text(
                                               dateTimeFormat(
-                                                  'MMMMEEEEd',
+                                                  "MMMMEEEEd",
                                                   listViewUsersRecord
                                                       .createdTime!),
                                               style:

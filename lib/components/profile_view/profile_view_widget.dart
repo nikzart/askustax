@@ -247,7 +247,7 @@ class _ProfileViewWidgetState extends State<ProfileViewWidget>
                                             10.0, 5.0, 0.0, 0.0),
                                         child: Text(
                                           dateTimeFormat(
-                                              'd/M h:mm a',
+                                              "d/M h:mm a",
                                               widget.userDetails!
                                                   .lastActiveTime!),
                                           style: FlutterFlowTheme.of(context)

@@ -33,6 +33,10 @@
         {
           "fieldPath": "services",
           "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "last_active_time",
+          "order": "ASCENDING"
         }
       ]
     },
@@ -74,6 +78,20 @@
         },
         {
           "fieldPath": "created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "transactions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "paidOn",
           "order": "DESCENDING"
         }
       ]

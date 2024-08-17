@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class Auth2LoginModel extends FlutterFlowModel<Auth2LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for brand component.
   late BrandModel brandModel;
   // State field(s) for emailAddress widget.
@@ -27,7 +26,6 @@ class Auth2LoginModel extends FlutterFlowModel<Auth2LoginWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     brandModel.dispose();
     emailAddressFocusNode?.dispose();
     emailAddressTextController?.dispose();

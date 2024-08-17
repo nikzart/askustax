@@ -75,6 +75,11 @@ class ChatMessagesRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "transaction" field.
+  DocumentReference? _transaction;
+  DocumentReference? get transaction => _transaction;
+  bool hasTransaction() => _transaction != null;
+
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
     _chat = snapshotData['chat'] as DocumentReference?;
@@ -88,6 +93,7 @@ class ChatMessagesRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _transaction = snapshotData['transaction'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -137,6 +143,7 @@ Map<String, dynamic> createChatMessagesRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  DocumentReference? transaction,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -152,6 +159,7 @@ Map<String, dynamic> createChatMessagesRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
+      'transaction': transaction,
     }.withoutNulls,
   );
 
@@ -175,7 +183,8 @@ class ChatMessagesRecordDocumentEquality
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.transaction == e2?.transaction;
   }
 
   @override
@@ -191,7 +200,8 @@ class ChatMessagesRecordDocumentEquality
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.transaction
       ]);
 
   @override

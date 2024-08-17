@@ -1,10 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'credits_model.dart';
@@ -110,59 +107,6 @@ class _CreditsWidgetState extends State<CreditsWidget> {
                 ),
               ],
             ),
-            if (FFAppState().navOpen)
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        await currentUserReference!.update({
-                          ...mapToFirestore(
-                            {
-                              'credits': FieldValue.increment(10),
-                            },
-                          ),
-                        });
-                      },
-                      text: '',
-                      icon: const FaIcon(
-                        FontAwesomeIcons.shoppingCart,
-                        size: 20.0,
-                      ),
-                      options: FFButtonOptions(
-                        width: 40.0,
-                        height: 40.0,
-                        padding: const EdgeInsets.all(0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .titleSmall
-                            .override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).titleSmallFamily,
-                              color: Colors.white,
-                              fontSize: 7.0,
-                              letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .titleSmallFamily),
-                            ),
-                        elevation: 3.0,
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
           ],
         ),
       ),

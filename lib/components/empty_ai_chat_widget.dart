@@ -81,9 +81,7 @@ class _EmptyAiChatWidgetState extends State<EmptyAiChatWidget> {
                         const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
                     child: MarkdownBody(
                       data:
-                          '''Hello! How can I assist you today? Are you looking for help with Indian taxation, accounting queries, or something else related to chartered accountancy?
-
-''',
+                          '''Hello! How can I assist you today? Are you looking for help with Indian taxation, accounting queries, or something else related to chartered accountancy?\n\n''',
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
                     ),

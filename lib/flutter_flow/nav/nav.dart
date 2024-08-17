@@ -7,7 +7,6 @@ import '/backend/backend.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -74,36 +73,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
+          appStateNotifier.loggedIn ? const AiChatWidget() : const Auth2LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
+              appStateNotifier.loggedIn ? const AiChatWidget() : const Auth2LoginWidget(),
         ),
         FFRoute(
           name: 'ai_chat',
           path: '/aiChat',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ai_chat')
-              : const AiChatWidget(),
+          builder: (context, params) => const AiChatWidget(),
         ),
         FFRoute(
           name: 'dash',
           path: '/dash',
           requireAuth: true,
-          builder: (context, params) =>
-              params.isEmpty ? const NavBarPage(initialPage: 'dash') : const DashWidget(),
+          builder: (context, params) => const DashWidget(),
         ),
         FFRoute(
           name: 'settings',
           path: '/settings',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'settings')
-              : const SettingsWidget(),
+          builder: (context, params) => const SettingsWidget(),
         ),
         FFRoute(
           name: 'auth_2_CreateClient',
@@ -158,9 +152,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'chat_2_main',
           path: '/chat2Main',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'chat_2_main')
-              : const Chat2MainWidget(),
+          builder: (context, params) => const Chat2MainWidget(),
         ),
         FFRoute(
           name: 'chat_2_InviteUsers',
@@ -199,6 +191,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'auth_2_CreateCA',
           path: '/auth2CreateCA',
           builder: (context, params) => const Auth2CreateCAWidget(),
+        ),
+        FFRoute(
+          name: 'auth_2_changePassword',
+          path: '/changePassword',
+          builder: (context, params) => const Auth2ChangePasswordWidget(),
+        ),
+        FFRoute(
+          name: 'subscribe',
+          path: '/subscribe',
+          requireAuth: true,
+          builder: (context, params) => const SubscribeWidget(),
+        ),
+        FFRoute(
+          name: 'transactions',
+          path: '/transactions',
+          requireAuth: true,
+          builder: (context, params) => const TransactionsWidget(),
+        ),
+        FFRoute(
+          name: 'metrics',
+          path: '/metrics',
+          requireAuth: true,
+          builder: (context, params) => const MetricsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -319,6 +334,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -337,6 +353,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
